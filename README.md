@@ -26,7 +26,7 @@ We want to address the growing need for small-scale automated cleanup solutions 
 
 *Show your high level design, as done in WS1 and WS2. What are the critical components in your system? How do they communicate (I2C?, interrupts, ADC, etc.)? What power regulation do you need?*
 
-![1742760433721](image/README/1742760433721.png)
+![1742761278310](image/README/1742761278310.png)
 
 ### 4. Design Sketches
 
