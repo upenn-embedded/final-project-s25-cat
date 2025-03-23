@@ -68,7 +68,7 @@ We are lasercutting the base of the robot car and are purchasing the wheels and 
 | **SRS-04** | Image Processing: The Raspberry Pi will capture images using an attached camera at a rate of at least 1 frame per second while scanning for trash or the beacon. It shall process the image and send detection results to the ATmega328PB via I2C within 500 ms.                                                                                                                                                                                                                                                                                                                 | Test: Place a target object (trash or beacon) in front of the camera. Verify that the Pi detects it and sends a message to the MCU in under 0.5 seconds. Check Pi logs and I2C communication timing.                                                                                                                                                                                                                                                                                                                                             |
 | **SRS-05** | PWM Motor Control Timing: The firmware will drive the motors using a PWM signal of at least 100 Hz frequency (with a target around 500 Hz for smooth control).The duty cycle shall be updated as needed (on speed changes) with a control loop period not greater than 100 ms. This ensures smooth speed variation without perceptible stalling or jitter.                                                                                                                                                                                                                       | Test: Measure the PWM output on the motor driver input using an oscilloscope. Verify the frequency is ≥100 Hz (e.g. ~500 Hz achieved, within ±5% of target). Change speed commands and confirm the duty cycle adjusts within the next 100 ms cycle. No audible irregularities or excessive motor vibration should be observed at the set frequency (confirm by listening and motor behavior).                                                                                                                                                  |
 | **SRS-06** | I2C Communication Protocol: The microcontroller will communicate with the Raspberry Pi using the I2C bus operating at standard speed (100 kHz clock). Sensor status updates (e.g. trash detected, weight, obstacle distance) shall be transmitted to the Pi at least 2 times per second, and command/control data from the Pi (e.g. navigation commands) shall be processed within 100 ms of receipt. The I2C communication shall include error-checking (ACK/NACK monitoring); on a communication failure, the system shall retry the transmission at least once within 50 ms. | Test: Use a protocol analyzer or logic analyzer on the I2C lines (with level shifting in place) to verify the bus clock is ~100 kHz. Run the system and confirm via logs that sensor data messages are sent to the Pi ≥2 Hz. Introduce a forced NACK or bus error (e.g. by briefly disconnecting SDA) and ensure the firmware attempts a retry and recovers communication. All commands from the Pi (simulated via I2C commands) should be observed to take effect on the robot (e.g. a movement command causes motor PWM change) within 0.1 s. |
-| **SRS-06** | User Interrupt & Safety Response: The system will provide a user interrupt (e.g. an emergency stop button or remote kill switch input to a GPIO interrupt). When the user interrupt is activated, the firmware shall immediately override normal operation and stop all motor activity within 100 ms, entering a safe idle state. Normal operation can only resume after a manual reset or explicit resume command.                                                                                                                                                             | Test: While the robot is moving, activate the emergency stop (press the button or trigger the interrupt line). Measure the time for the motors to stop (e.g. using timestamps or an LED triggered at stop); it should be <100 ms. Verify that during the stop condition, no motor motion occurs and the robot remains stationary. Attempt to issue movement commands during the stop state to ensure they are ignored. Finally, reset the interrupt and confirm the system only resumes operation when allowed.                                  |
+| **SRS-07** | User Interrupt & Safety Response: The system will provide a user interrupt (e.g. an emergency stop button or remote kill switch input to a GPIO interrupt). When the user interrupt is activated, the firmware shall immediately override normal operation and stop all motor activity within 100 ms, entering a safe idle state. Normal operation can only resume after a manual reset or explicit resume command.                                                                                                                                                             | Test: While the robot is moving, activate the emergency stop (press the button or trigger the interrupt line). Measure the time for the motors to stop (e.g. using timestamps or an LED triggered at stop); it should be <100 ms. Verify that during the stop condition, no motor motion occurs and the robot remains stationary. Attempt to issue movement commands during the stop state to ensure they are ignored. Finally, reset the interrupt and confirm the system only resumes operation when allowed.                                  |
 
 ### 6. Hardware Requirements Specification (HRS)
 
@@ -95,11 +95,13 @@ We are lasercutting the base of the robot car and are purchasing the wheels and 
 | **HRS-05** | Battery and Power System:The robot will be powered by a battery system that provides sufficient voltage and capacity for both motors and electronics. The battery pack (and regulators) must supply12 V(nominal) for the motors and a regulated5 V±5%for the microcontroller and sensors. The capacity shall support at least1 hourof continuous operation (motors driving and sensors active) before recharge. The 5 V regulator should handle peak current draw (motor drivers + logic, ~2–3 A transient) without the voltage dropping out of the 4.75–5.25 V range. | Test: Use a multimeter to verify the battery voltage and regulator outputs. Under no-load, confirm ~12 V from the battery and 5 V at the logic rail. Then run the robot under a heavy load scenario (e.g. motors stalled or frequent start-stop to draw peak current) and measure the 5 V line stays within 4.75–5.25 V. Check that the system runs for at least 60 minutes on a full charge by driving it continuously in an obstacle course; record the run time until the battery depletes to cutoff. Also observe that the microcontroller and sensors operate normally throughout, indicating the regulator is supplying stable power (no resets or brown-outs).        |
 | **HRS-06** | Logic Level Interface (I2C Bus Hardware): The I2C level shifter and bus wiring will allow reliable communication between the 5 V ATmega328PB and 3.3 V Raspberry Pi. The hardware must not introduce signal distortion at the standard 100 kHz I2C clock. Pull-up resistors or the level shifter module shall maintain the I2C lines within proper voltage thresholds for both devices. Communication integrity shall be ≥99% (no more than 1% packet loss or corruption during normal operations of 10 minutes).                                                       | Test: Instrument the SDA and SCL lines with an oscilloscope while the microcontroller and Pi exchange data. Verify the logic high level on the bus is ~3.3 V (through the level shifter) and rise/fall times are within I2C specifications at 100 kHz. Run a continuous I2C communication test for 10 minutes (transferring hundreds of messages) and count any errors or checksum failures in the data; the error rate should be <1%. Also test the bus in both idle and motor-active scenarios (to ensure motor electrical noise doesn’t disturb signals), checking that communication remains stable (use an EMI filter or shielding if needed to meet this requirement). |
 
-### 7. Bill of Materials (BOM)
+### g7. Bill of Materials (BOM)
 
 *What major components do you need and why? Try to be as specific as possible. Your Hardware & Software Requirements Specifications should inform your component choices.*
 
 *In addition to this written response, copy the Final Project BOM Google Sheet and fill it out with your critical components (think: processors, sensors, actuators). Include the link to your BOM in this section.*
+
+[Link to our BOM](https://docs.google.com/spreadsheets/d/11ymjW0_Uoc0fHEQ4GR5q43txAdh5dIRnGoK7Q-v5SPE/edit?usp=sharing)
 
 ATMega 328PB
 
@@ -117,6 +119,10 @@ Infrarred sensor
 
 We have chosen an analog infrarred sensor, since it is more precise than the ultrasonic sensor and it has a longer range than digital infrarred sensors. It will be placed at floor level, facing forward, to detect the "trash" that the vehicle should collect.
 
+Buck converter
+
+We have chosen a buck converter to 5 V because the raspberry pi and the
+
 Raspberry Pi
 
 The raspberry pi will be used for image processing. We will be using this board instead of the ATMega because image processing is very computationally intensive, and we believe that using the ATMega would greatly limit the real-time
@@ -127,17 +133,15 @@ We will use the Raspberry Pi cam v3 because it can interface with the raspberry 
 
 Car chassis
 
-To build this, we will design a base board, laser cut it with acrylic and attach the motors on the bottom and the main components. This is
+To build this, we will design a base board, laser cut it with1/8 inch acrylic and attach the motors on the bottom and the main components.
 
 Wheels
 
-There will be two front wheels, each attached to a motor.
-
-An omnidirectlional back wheel bearing will be used so the
+There will be two front wheels, each attached to a motor, and one swivel support wheel in the back. This setup will ensure the vehicle will be stable and have full freedom of movement w
 
 Motor
 
-We have chosen ____ motor because ____. We will have two motors, one for each of the front wheels that we will be able to actuate independently to steer the car.
+We have chosen dc gearbox motors motor because ____. We will have two motors, one for each of the front wheels that we will be able to actuate independently to steer the car.
 
 Motor driver
 
