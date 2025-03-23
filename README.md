@@ -34,9 +34,9 @@ The critical components of our system are the battery, buck converter, ultrasoni
 
 *What will your project look like? Do you have any critical design features? Will you need any special manufacturing techniques to achieve your vision, like power tools, laser cutting, or 3D printing?*
 
-![1742760587519](image/README/1742760587519.png)
+![1742765660943](image/README/1742765660943.png)
 
-We are lasercutting the base of the robot car and are purchasing the wheels and other required sensors. The critical design features like motors, a MCU stand, the battery, breadboard, IR sensor, ultrasonic sensor, and shovel are included in the sketch above.
+We are lasercutting the base of the robot car and are purchasing the wheels and other required sensors. The critical design features like motors, a MCU stand, the battery, breadboard, IR sensor, ultrasonic sensor, camera, and shovel are included in the sketch above.
 
 ### 5. Software Requirements Specification (SRS)
 
