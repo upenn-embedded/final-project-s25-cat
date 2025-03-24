@@ -80,7 +80,7 @@ We are lasercutting the base of the robot car and are purchasing the wheels and 
 
 **H-Bridge** An electronic circuit (L298N module) that drives the motors in both directions
 
-**Beacon:** Wireless beacon used as a drop-off location marker (as in emitting a signal for robot to home in)
+**Beacon:** Beacon used as a drop-off location marker
 
 **Battery:** On-board power source (rechargeable) for motors and electronics
 
@@ -105,7 +105,7 @@ We are lasercutting the base of the robot car and are purchasing the wheels and 
 
 ATMega 328PB
 
-This will be our main microntroller that will control the motors and interface between the sensors.
+This will be our main microntroller that will control the motors and interface between the sensors in real time, and actuate the motors.
 
 Ultrasonic sensor
 
@@ -121,11 +121,11 @@ We have chosen an analog infrarred sensor, since it is more precise than the ult
 
 Buck converter
 
-We have chosen a buck converter to 5 V because the raspberry pi and the
+We have chosen a buck converter to 5 V because the raspberry pi and ATMega both require a stable 5V input voltage, and the 1.5 V batteries in series can have a voltage of up to 6V. When the batteries can no longer provide a voltage above 5 V, they will be switched for fresh batteries.
 
 Raspberry Pi
 
-The raspberry pi will be used for image processing. We will be using this board instead of the ATMega because image processing is very computationally intensive, and we believe that using the ATMega would greatly limit the real-time
+The raspberry pi will be used for image processing, and will then send the navigation commands to the ATMega. We will be using this board instead of the ATMega because image processing is very computationally intensive, and we believe that using the ATMega would greatly limit the real-time performance of the system.
 
 Camera
 
@@ -137,15 +137,21 @@ To build this, we will design a base board, laser cut it with1/8 inch acrylic an
 
 Wheels
 
-There will be two front wheels, each attached to a motor, and one swivel support wheel in the back. This setup will ensure the vehicle will be stable and have full freedom of movement w
+There will be two front wheels, each attached to a motor, and one swivel support wheel in the back. This setup will ensure the vehicle wis stable and had full freedom of movement.
 
 Motor
 
-We have chosen dc gearbox motors motor because ____. We will have two motors, one for each of the front wheels that we will be able to actuate independently to steer the car.
+We have chosen dc gearbox motors motor because we believe they will provide the necessary torque to move the . We will have two motors, one for each of the front wheels that we will be able to actuate independently to steer the car.
 
 Motor driver
 
-The chosen
+The chosen motor driver is able to drive 2 DC motors, at a maximum current of 600 mA per channel. It is compatible with 5 V logic, so I can use the ATMega to control it with PWM output.
+
+Batteries
+
+We have decided to use alkaline AA batteries. This was a decision that balances portability, limitations on lithium-based batteries and weight considerations.
+
+We plan to use 12 batteries in a 4x3 arrangement (4 in series to reach 6V and 3 in parallel). This decision was made to achieve both the voltage and maximum current output required. We have also included battery holders to be able to safely place all the batteries.
 
 ### 8. Final Demo Goals
 
