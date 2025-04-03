@@ -176,9 +176,129 @@ We will require enough floor space to demonstrate the vehicle moving. We will al
 
 ### Last week's progress
 
+We gathered most of our materials, including the base robot car, the camera, raspberry pi kit, the NiMH batteries, and the ultrasonic sensor.
+
+We will be using the blue ultrasonic sensor (takes 5V), which we have experienced with the Theremin lab to have a greater range than the green ultrasonic sensor.
+
+Base robot car:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdt--o9Mdg30LXU5_YfhcVcMXnIVPu5c8R0RwniC-oxKkC0SKDpPkwSyD3IF_ILGjZvA8WVNmm96k6MMKpTZNEdilAp4wJrzKFmWBzcTVE6EZeSklbY2_T6WJt94ZnSPE3zr5Td?key=GrIEj-AS8lYYmqSILItKILqK)
+
+Raspberry Pi Kit:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcNI4u8DGlCDFOu05hJqk0A0J6cOgVD63Wnz8YR1nyroDpFw_3wBSERrQ64vYFbtC1bs1R_GXnsfbd-A8c_Dxt6TcHl49OsjSLzL2Qx92lfTPQyjvk8DHYPlAw0quXyMjLeAU-nvw?key=GrIEj-AS8lYYmqSILItKILqK)
+
+Batteries & Battery Holder:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdVQAq1-XxuewqXYp-p7oaq2Y2GUjIK9jCN5Tdq5DcMeO8Nrvoq6PEM9XLSt3mlAGGADf2P1xlZ525ct0_B2vEIWe1wkHs0ZmcUKhzQMbRh9vk0updrrm1pC_2q7_S5EgrwhU96?key=GrIEj-AS8lYYmqSILItKILqK)
+
+For the battery holders, we have sent 2 to print to addlab, to test that they will fit correctly before printing all 8. We are waiting to hear back. This was sent on Monday, so we will consider alternative methods and places to 3D print our components.
+
+For the raspberry pi, we downloaded the RPi OS and made sure to be able to connect the camera. We were able to run a simple opencv script that took a photo with the camera. We have also created a new repository for the raspberry pi code and added it as a submodule to the main project repository. This will allow us to make changes to the code on our own devices, and pull only the relevant changes directly to the Raspberry Pi.
+
+Raspberry Pi setup to computer:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXelNM6ojmFDWOkpgC9l3WN_p6xgQamUYeNEEDj_s58K2uRuUpYMiJ2pPjpFpw8qOCKn3N6I2rSt3TnbXBoOv1_cMRa7E1-mwPObSk50QJQcIRJ5KuQyRtyc7JhR8RF6MGl4do1oXg?key=GrIEj-AS8lYYmqSILItKILqK)
+
+Camera connection:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeY3z8B-gGCxundPAJAtnchaJN4bGMd8i7adn2cqKUPZujZaB69gEPJkSQre5CSvJV1DYyOYUZ2sP4Jq_uXMEkxODE-_5D_KHXNDhO3tZytO8i7ockZ3JabrRCEsBUCPAsAVKapgQ?key=GrIEj-AS8lYYmqSILItKILqK)
+
+Raspberry Pi Github Creation:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdac7qWgf-L7u4ecZo1NR2US85iWMTGqZz3yc7TO4Sk0t8PWWVVBVvNt9rVWlNRD3swnARrcX5VpaIp49l4xaQuCtoU3grtLEgu9dx8ryetwNg7ssJJcHtSA4hrBFefUidwX51o?key=GrIEj-AS8lYYmqSILItKILqK)
+
+Addlab Print request for battery holder:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeKOM2R30os6iQSKhDA8qz13dRx_KXJPtqeotRRwO__bgGjWX2S79sudIpHuojFN7pTr3WJDHJeRjr9pGG5RYokG-HFcBzu9jxojRp4Q6kNSMuJHpB981KedbEmCp6HtjxFEXul?key=GrIEj-AS8lYYmqSILItKILqK)
+
+Parts order (IR sensor & Buck Converter):
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdEbUzkl_Pw20bx5NaeY9sVSDvp_5L4R_sTg0ZJRA2P1zTZyLP40f96g4nfuQPmH-eOX8KYkqOmFXg3IO-kFQLDX3jUynfJgRtQDa7Tyn13xpRo9J_RALg8JjBkn1l2Ggk3SMDTnA?key=GrIEj-AS8lYYmqSILItKILqK)![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcdVtsCsK9N9XNSIPVwTgYUFP0rhCg6sMkJgzgEr2aLYamQTzjQRVu-IIRJ-d2q4H1b7a4zVtpB9FXwvcikZKRbau5PiQoWj_E0DzyvsVDT5-HaysFYCGzz6XB5vNk5LGzqnyF-Gg?key=GrIEj-AS8lYYmqSILItKILqK)
+
+Shovel design planning:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXduud3tKr5WdgF2brwovbUqUYAivMFNTlMUT4ja3dwUEo2DiPOSARjCsy8Ki-Xza3_xJD5K4GOrOCbrPtKBOJvFDrRHpOz_4qvlQVtoX8g8BujQmwxo0TVHPuT9P4ZjnxNotrGW?key=GrIEj-AS8lYYmqSILItKILqK)
+
+
 ### Current state of project
 
+* What state is the project in right now?
+
+The project has a great foundational base as we have almost all our hardware components together. We have wired and incorporated the components that we do have. We have begun working on the link between hardware and software through testing with the raspberry pi.
+
+* How the tasks fit into your end goal
+
+We will need all these components to make a functional autonomous trash collection bot. Thus, by acquiring all our parts now, we are able to focus on the wiring connections and the embedded systems part. We also have tested that our raspberry pi is working as expected, which will be fundamental to our image processing.
+
+* Hardware status - have you purchased everything you need (plus backups)? Is everything working right?
+
+We have purchased what we need. We tested out camera and raspberry pi kit, and both work as intended.
+
 ### Next week's plan
+
+**Planning**
+
+**Task 1: CADing the shovel then sending to 3D print**
+
+Estimated time: 3 hours + whatever time addlab takes to print (few days)
+
+Assigned team members: Chekayli and Taarana
+
+Definition of done: when it is properly attached to the base robot car
+
+**Task 2: Ensuring the robot can move forward and backward - motor output**
+
+Estimated time: 1 hour
+
+Assigned team members: All
+
+Definition of done: once the robot can move when supplied with power
+
+**Task 3: Start writing firmware for ATMega - sensor input**
+
+Estimated time: 6 hours
+
+Assigned team members: All
+
+Definition of done: once we can serial output actual distance values for the sensors
+
+
+---
+
+**Future Planning (For preparation of MVP demo and final demo):**
+
+**Task 4: Power routing**
+
+Estimated time: 4 hours
+
+Assigned team members: all
+
+Definition of done: motor and components are powered by the batteries. Dependent on addlab printing time for the battery holders and part arrival time
+
+**Task 5: Interface RPi and ATMega using I2C**
+
+Estimated time: 3-4 hours
+
+Assigned: all
+
+Definition of done: ATMega sends sensor input to RPi, RPi can respond with movement directives.
+
+**Task 6: Object detection using OpenCV**
+
+Estimated time: 6 hours
+
+Assigned: all
+
+Definition of done: we can detect objects to collect successfully from the live video input.
+
+**Task 7: Actually figure out directives for robot movement**
+
+Estimated time: 15 hours
+
+Assigned: all
+
+Definition of done: when the movement of the robot matches the object detection output.
 
 ## Sprint Review #2
 
