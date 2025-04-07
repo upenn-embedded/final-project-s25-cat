@@ -9,6 +9,7 @@
 
 // ----- INIT PWM TIMERS -----
 
+
 // === TIMER INITIALIZATION ===
 
 void timer0_init() {
@@ -126,23 +127,8 @@ void cw_rotation(uint8_t speed, uint16_t angle) {
     // Forward left and reverse right
     // Untested, might miraculously actually work but probably not
     
-    // Left motor outputs
-    DDRD |= (1 << PD5) | (1 << PD6);
-    PORTD |= (1 << PD5);
-    PORTD &= ~(1 << PD6);
-
-    // Right motor outputs
-    DDRB |= (1 << PB1) | (1 << PB2);
-    PORTB |= (1 << PB2);
-    PORTB &= ~(1 << PB1);
-    
-    // Left PWM
-    TCCR0A |= (1 << COM0B1);
-    OCR0B = speed;
-
-    // Right PWM
-    TCCR1A |= (1 << COM1B1);
-    OCR1B = speed;
+    forward_left(speed);
+    _delay_ms(20000);
 }
 
 int main(void) {
@@ -151,7 +137,7 @@ int main(void) {
 
     while (1) {
         //add delay after moving motor, only then break
-        
+        /*
          brake();
          _delay_ms(20000);
          forward_left(1000);
@@ -181,10 +167,10 @@ int main(void) {
          brake();
          reverse(100);
          _delay_ms(20000);
-
+*/
 
          // cw_rotation
-         cw_rotation(100);
+         cw_rotation(100,90);
          _delay_ms(20000);
          
          
