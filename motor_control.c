@@ -122,6 +122,29 @@ void brake() {
     brake_right();
 }
 
+void cw_rotation(uint8_t speed, uint16_t angle) {
+    // Forward left and reverse right
+    // Untested, might miraculously actually work but probably not
+    
+    // Left motor outputs
+    DDRD |= (1 << PD5) | (1 << PD6);
+    PORTD |= (1 << PD5);
+    PORTD &= ~(1 << PD6);
+
+    // Right motor outputs
+    DDRB |= (1 << PB1) | (1 << PB2);
+    PORTB |= (1 << PB2);
+    PORTB &= ~(1 << PB1);
+    
+    // Left PWM
+    TCCR0A |= (1 << COM0B1);
+    OCR0B = speed;
+
+    // Right PWM
+    TCCR1A |= (1 << COM1B1);
+    OCR1B = speed;
+}
+
 int main(void) {
     timer0_init();
     timer1_init();
@@ -157,6 +180,11 @@ int main(void) {
          _delay_ms(20000);
          brake();
          reverse(100);
+         _delay_ms(20000);
+
+
+         // cw_rotation
+         cw_rotation(100);
          _delay_ms(20000);
          
          
