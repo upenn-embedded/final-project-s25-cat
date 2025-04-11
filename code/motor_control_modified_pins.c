@@ -3,6 +3,7 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <util/delay.h>
+#include "motor_control_modified_pins.h"
 
 void motorInit() {
     timer0_init();
@@ -180,24 +181,25 @@ void brake(void) {
 }
 
 void cw_rotation(uint8_t speed, uint16_t angle) {
+    // TODO: actually determine angle
     // For a clockwise rotation, drive the left motor forward and the right motor in reverse.
     forward_left(speed);
     reverse_right(speed);
     _delay_ms(20000);  // Fixed delay as in the original code.
 }
 
-int main(void) {
-    timer0_init();
-    timer1_init();
-    timer2_init();
+// int main(void) {
+//     timer0_init();
+//     timer1_init();
+//     timer2_init();
     
-    // Enable global interrupts if needed
-    // sei();
+//     // Enable global interrupts if needed
+//     // sei();
     
-    while (1) {
-        cw_rotation(100, 90);
-        _delay_ms(20000);
-    }
+//     while (1) {
+//         cw_rotation(100, 90);
+//         _delay_ms(20000);
+//     }
     
-    return 0;
-}
+//     return 0;
+// }

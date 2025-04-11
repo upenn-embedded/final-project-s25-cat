@@ -4,8 +4,8 @@ PD3: Right motor reverse, PWM timer2
 PD5: Left motor forward, PWM timer0
 PB1: Left motor reverse, PWM timer1
 
-Ultrasonic:
-PD4, PB0
+PD4: Trig pin
+PB0: Echo pin
 
 SPI:
 PB4: MISO

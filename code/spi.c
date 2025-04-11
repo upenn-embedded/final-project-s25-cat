@@ -45,8 +45,9 @@ ISR(SPI_STC_vect) {
         case 'S':
         // send sensor input
         // TODO: the type casting is very weird, need to fix and figure out actual dims
-            uint16_t cm_distance = measure_ultrasonic();
-            response = cm_distance;
+            uint16_t cmDistance = measureDistance();
+            response = cmDistance; // TODO: oopsie response is actually 8bits
+            // @Chekayli what was the max distance we got out of your ultrasonic sensor
             break;
     }
 
