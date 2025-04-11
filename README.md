@@ -220,7 +220,6 @@ Shovel design planning:
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXduud3tKr5WdgF2brwovbUqUYAivMFNTlMUT4ja3dwUEo2DiPOSARjCsy8Ki-Xza3_xJD5K4GOrOCbrPtKBOJvFDrRHpOz_4qvlQVtoX8g8BujQmwxo0TVHPuT9P4ZjnxNotrGW?key=GrIEj-AS8lYYmqSILItKILqK)
 
-
 ### Current state of project
 
 * What state is the project in right now?
@@ -263,7 +262,6 @@ Assigned team members: All
 
 Definition of done: once we can serial output actual distance values for the sensors
 
-
 ---
 
 **Future Planning (For preparation of MVP demo and final demo):**
@@ -304,9 +302,127 @@ Definition of done: when the movement of the robot matches the object detection 
 
 ### Last week's progress
 
+We designed the shovel and an attachment block piece in SolidWorks and sent the parts to print. We designed the shovel piece so that the bottom plate is cut-out, so we can effectively trap and push trash towards the wall. We designed an extruding piece in the center of the cutout, so that we can place the IR sensor or camera to detect objects to pick up. We also created  a slot in the back-plate of the shovel, so we can adjust the height placement of the shovel when attaching it. We split the shovel into 2 halves to fit printing size requirements, and will glue the halves together once they arrive. We are waiting for the main shovel piece to arrive. We designed a block that will fit under the top plate of the base robot car, with a 3mm hole for a screw, that will fit into the slot on the back plate of the shovel (for height adjustment and attachment). We also got the battery holders that fit properly together, printed.
+
+We gathered schematics and documentation relating to the base robot car (KatzBot), and tested the motor control with code, as well as speed and rotation with PWM (higher PWM means greater speeds, also note that there is a minimum PWM of ~100 for the motor to move). We got the car’s wheels to turn forward and backwards separately and simultaneously at different speeds, and the overall car to rotate clockwise.
+
+We expanded upon our code from Part C of the Theremin Lab (Lab 3) and used the HC-SR04P blue ultrasonic sensor (takes 5V), to have a greater distance range than the green ultrasonic sensor. Right now, we have working code that moves the robot towards an object. We were able to serial output distance values for the sensor. Then, we programmed the robot to stop if the ultrasonic sensor reads a smaller distance than our set distance threshold which is adjustable. The robot successfully performs this action. We intend to further test what this threshold will be after implementing the raspberry pi with our robot.
+
+We decided to change our serial protocol from I2C to SPI because we thought we would be able to take advantage of the full-duplex capabilities of the protocol. We are setting the Atmega to be the peripheral and the raspberry pi to be the controller, and we wrote the code to receive SPI commands , and send back either status codes or ultrasonic sensor readings.
+
+We restructured our existing Atmega code to modularize it, since it was all condensed into one file before and it was becoming hard to interpret and find exactly where to change different things.
+
+We wrote the preliminary code for the Raspberry Pi interfacing. Right now, the code handles SPI communication, camera input and object detection*. Next steps involve testing the code.
+
+* everything that would go around the model actually detecting the object.
+
+We also updated the bash script to be able to run the code with SPI, and added more error handling into the setup of the running program.
+
+**Proof:**
+
+Shovel:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeAPJkwLj0vOdk6ZLWGPJXBAgjxJIEl3xnAG97lNCCxFX9fl7Xv6RxYy6_n3T6P9L1vdFthPxsLy7DRzJz4mxUGlQiiX8KQZMTI18qGJH7UweCnMYly0y-NbUND2pF_5RcveFrulA?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfc5KcX1AljO4jp3t5ToqsrflRcwJfOsuVzJqMfJW1lLqWa7ENHzQKSvraMHX8qzoZ1dE6DPW1p-tbwLcyvMX3guBoox9O8FQ17_kAE5Pe3FZUD8R16T_SoX5vcueZ6TA-_Zrr7TA?key=VUb_cxOAcHKGB4hOVj2NM9BJ)![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdm-N1PT_sFphQFaIcJBmk3gGizUXUvhzkp3grNAYUXgge_yqSVyjhL7trk5TN4QUlz6F1zXzIb9VoCWhx5kokTltLixWRvYDphhWGRpvX9Fch_PQw5_ZVlHB4fEQBPZEDmudhrwQ?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
+
+Printing request:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcH29khFBTbFf1kg75HgQXqwwjoJ3LEYUMdoLyjXlnwE79XypZhfZfhM4ibyUwGf5h_8n0j3a3sWlM8GfVhwj6w05SBE3e-YaVDv9thuokbUxf-nqw_jZZmr_N6cWldTBHe9L-T0w?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
+
+Attachment block for shovel:
+
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkSQq0_Aczngl70xm_x3TSbpZ0goboYt3d_ygBz2sHG1cY9fV6DU45dGeJ6dU9tJBJ0qcQDLZ9bWA94yGS2vS1NXj1Z2Zv1Jn0adKtjo5apMzzPsHpDwELMHUXGKF2JXNZenS-KA?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
+
+Motor control videos:
+https://drive.google.com/file/d/1o-LlPXBNlsq7b0NR9ot6adOTAn2zIAc2/view?usp=sharing
+
+https://drive.google.com/file/d/1erBPFCrLf8zJfBMNw_j0bJg6JB4yxkOM/view?usp=sharing
+
+GitHub Commits:
+
+Motor Control:
+
+* https://github.com/upenn-embedded/final-project-s25-cat/blob/main/motor_control.c
+* https://github.com/upenn-embedded/final-project-s25-cat/blob/main/ultrasonic.c
+* (Datasheet): https://github.com/upenn-embedded/final-project-s25-cat/blob/main/datasheets_and_models/Romi%20Mainboard.PDF
+
+SPI:
+https://github.com/upenn-embedded/final-project-s25-cat/blob/main/code/spi.c
+
+https://github.com/upenn-embedded/final-project-s25-cat/blob/main/code/spi.h
+
+Raspberry Pi:
+
+https://github.com/andrgv/taaranator_rpi/tree/f2531cf05abb43c9d4bac655ac3ee0facf48a018
+
+![img](https://lh7-rt.googleusercontent.com/docsz/AD_4nXc7kr6-np9IOF9doO61hp-y-XCqGn75SNCZglBcjdTE6-RUWLdYDHU0t6v4d7bdhH2F1cCPoTMp6C0DX0B-0uNsUQXVBZ03TUUiVrBlVZuOUU-aNoNxNESLUw4KE9hGkbT320HWQQ?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
+
 ### Current state of project
 
+* What state is the project in right now?
+
+The ultrasonic sensor and motor control of the robot have been thoroughly tested and are working effectively: The robot stops before a collision by tracking if the object in front of it is at a smaller distance than its distance threshold we set. We are working on SPI serial communication with the Raspberry Pi and camera. We are aiming to use image processing to detect trash - we have the IR sensor part in case we would like to incorporate that.
+
+* How the tasks fit into your end goal
+
+From our most recent progress, connecting the hardware and writing the code for the ultrasonic sensor and writing the ATMega code for the motor control allows us to move the robot car towards the wall and stop before collision. For the image processing component, we are leveraging the Raspberry Pi and Camera and are figuring out SPI to detect what is trash and what is not. This is to differentiate between whether we should “collide” into the object in question or stop (indicating a wall nearby).
+
+* Hardware status - have you purchased everything you need (plus backups)? Is everything working right?
+
+We have purchased what we need. We tested our camera, raspberry pi kit, base robot car, and ultrasonic sensor, and everything works as intended.
+
 ### Next week's plan
+
+**Reflection on Last Week’s Planning:**
+
+For Task 1 (CADing the shovel then sending to 3D print), we estimated 3 hours; however, this took around 7-8 hours given that we further familiarized ourselves with Solidworks for the applications we were aiming to implement. Also, Addlab asked us to resize components a few times before printing given that they first said we could have a 16x10x10in build size; however, later asked us to do 10x10x10in, hence we had to pivot our dimensions to account for this.
+
+For Task 2 (Ensuring the robot can move forward and backward - motor output), we estimated 1 hour; however, due to the complexity of our robot and its datasheets, we took 4 hours to implement the motor control (moving wheels in different directions and speeds) with the hardware and software in a cohesive manner.
+
+For Task 3 (Start writing firmware for ATMega - sensor input), we estimated 6 hours; however, this task only took us 3 hours to implement such that the robot stopped once the ultrasonic sensor read a small distance in front of it - smaller than that of our set distance threshold. We were able to serial output actual distance values for the sensors, using base code from the Theremin lab.
+
+**Future Planning:**
+
+*Task 4: Power routing*
+
+Estimated time: 4 hours
+
+Assigned team members: Andrea (soldering), All (connection to robot car)
+
+Definition of done: soldering wires out of the battery holders and connecting the batteries to the robot car
+
+*Task 5: Interface RPi and ATMega using SPI*
+
+In hindsight, I am no longer sure the change in protocol was a great idea because the ATMega is very limited with pins and timers, and we are constrained by the motors and ultrasonic sensor requiring timers to function. We will figure out how to/if we can use timer 3, and in the worst case scenario rewrite the serial communication to do I2C. Our next steps will be to test and debug the code we wrote on the ATMega and Raspberry Pi to make sure that it does work.
+
+Estimated time: 3-4 hours
+
+Assigned: Andrea
+
+Definition of done: Figuring out how to use 4 assigned pins and rewire motor control PWM as needed. The ATMega needs to sends sensor input to RPi, RPi can respond with movement directives.
+
+*Task 6: Object detection using OpenCV*
+
+Next steps include actually making a model for trash detection. We are currently considering a few different options:
+
+1. Take many pictures and build a model. Pros: will probably more accurate for our intention. Cons: Data collection will take time. Training and adjusting will potentially also take time. Note: could take some existing model as a base.
+2. Filter by color. Pros: potentially faster. Cons: processing might not be as reliable. Different lighting conditions might introduce issues into the system.
+3. Using a pretrained model. Pros: faster deployment. Cons: don’t know where to find a suitable one. Might not be very accurate for our usecase
+
+Estimated time: 6 hours
+
+Assigned: All
+
+Definition of done: we can detect objects to collect successfully from the live camera input.
+
+*Task 7: Figure out directives for robot movement*
+
+Estimated time: 15 hours
+
+Assigned: All
+
+Definition of done: when the movement of the robot matches the object detection output.
 
 ## MVP Demo
 
