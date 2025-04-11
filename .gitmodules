@@ -1,3 +1,4 @@
 [submodule "taaranator_rpi"]
 	path = taaranator_rpi
 	url = git@github.com:andrgv/taaranator_rpi.git
+	branch = main
