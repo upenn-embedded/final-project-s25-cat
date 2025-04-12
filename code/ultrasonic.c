@@ -12,6 +12,7 @@
 
 volatile uint16_t timer3_count = 0;
 volatile uint8_t measurementReady = 0;
+uint8_t distanceCm = 0;
 
 void ultrasonicInit(void) {
     TCCR3A = 0;

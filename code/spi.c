@@ -16,6 +16,7 @@ void spiInit() {
 }
 
 ISR(SPI_STC_vect) {
+    // TODO: disable interrupts
     uint8_t message = SPDR;
     uint8_t response = 0;
 

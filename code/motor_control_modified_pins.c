@@ -10,6 +10,8 @@ void motorInit() {
     timer1_init();
     timer2_init();
 }
+
+// TODO: fine tune speed and
 // ----- TIMER INITIALIZATIONS -----
 //
 // Timer0 is used for forward channels on both motors
