@@ -2,13 +2,29 @@
 
 ## Aspirational assignments
 
-TODO
-
 ### Motor
+
+PD6: Right motor forward, PWM timer0 OC0A
+
+PD3: Right motor reverse, PWM timer2 OC2B
+
+PD5: Left motor forward, PWM timer0 OC0B
+
+PB1: Left motor reverse, PWM timer1 OC1A
 
 ### Ultrasonic sensor
 
+PD4: Trig pin
+PB0: Echo pin, timer 1 ICP1 input capture
+
 ### SPI
+
+Using SPI0
+
+PB4: MISO
+PB3: MOSI
+PB5: SCK
+PB2: CS
 
 ## Current assignments - broken and I believe actually not true
 
@@ -49,7 +65,7 @@ PD5:  Left reverse, PWM timer0
 
 **PD4**: TRIG_PIN
 
-**PB0**: ECHO_PIN, timer1???????????? WHAT WHY DO WE USE THE SAME TIMER FOR PWM MOTOR AND THIS
+**PB0**: ECHO_PIN, timer1
 
 ## What the datasheet says
 
