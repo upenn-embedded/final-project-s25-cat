@@ -3,7 +3,7 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <util/delay.h>
-#include "motor_control_modified_pins.h"
+#include "motor_control.h"
 
 void motorInit() {
     timer0_init();

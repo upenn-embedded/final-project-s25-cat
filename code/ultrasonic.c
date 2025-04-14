@@ -3,14 +3,13 @@
 #include <util/delay.h>
 #include <stdint.h>
 
-#ifndef F_CPU
 #define F_CPU 16000000UL
-#endif
 
 #define TRIG_PIN PD4
-#define ECHO_PIN PB0
+#define ECHO_PIN PD6
 
-volatile uint16_t timer3_count = 0;
+
+volatile uint16_t timer1_count = 0;
 volatile uint8_t measurementReady = 0;
 uint8_t distanceCm = 0;
 
@@ -25,29 +24,32 @@ void send_trigger_pulse() {
 }
 
 
-ISR(TIMER3_CAPT_vect) {
+ISR(TIMER1_CAPT_vect) {
     static uint16_t start_time = 0;
     
-    if (TCCR3B & (1 << ICES3)) {
+    if (TCCR1B & (1 << ICES1)) {
         // Rising edge detected: save the time
-        start_time = ICR3;
-        TCCR3B &= ~(1 << ICES3); // Switch to capture falling edge
+        start_time = ICR1;
+        TCCR1B &= ~(1 << ICES1); // Switch to capture falling edge
     } else {
         // Falling edge detected: calculate pulse width
-        timer3_count = ICR3 - start_time;
+        timer1_count = ICR1 - start_time;
         measurementReady = 1;
-        TCCR3B |= (1 << ICES3); // Switch back to capture rising edge for the next measurement
+        TCCR1B |= (1 << ICES1); // Switch back to capture rising edge for the next measurement
     }
 }
 
 
 void measureDistance() {
+    DDRD &= ~(1 << ECHO_PIN);   // set PD6 as input
+    PORTD &= ~(1 << ECHO_PIN);  // disable pull-up
+
+    measurementReady = 0;
     send_trigger_pulse();
     _delay_ms(60);
-    uint16_t duration_us = timer3_count / 2;
-    uint8_t distance_cm = duration_us / 58;
-    measurementReady = 0;
-    return distance_cm;
+    uint16_t duration_us = timer1_count / 2;
+    distanceCm = duration_us / 58;
+    
 }
 
 uint8_t getDistance() {

@@ -9,6 +9,8 @@
 #include "motor_control_modified_pins.h"
 #include "ultrasonic.h"
 
+#define SPEED 100
+
 void spiInit() {
     DDRB |= (1 << MISO); // MISO is output
     SPCR = (1 << SPE) | (1 << SPIE); // Enable SPI
@@ -22,11 +24,11 @@ ISR(SPI_STC_vect) {
     switch (message) {
         case 'F':
         // go forward
-            forward(100);
+            forward(SPEED);
             break;
         case 'R':
         // go back
-            reverse(100);
+            reverse(SPEED);
             break;
         case 'B':
         // break
@@ -34,11 +36,11 @@ ISR(SPI_STC_vect) {
             break;
         case 'L':
         // go left
-            ccw_rotation(100);
+            ccw_rotation(SPEED);
             break;
         case 'D':
         // go right
-            cw_rotation(100);
+            cw_rotation(SPEED);
             break;
         case 'S':
         // send sensor input
