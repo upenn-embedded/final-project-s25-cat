@@ -28,20 +28,30 @@ int main(void) {
 //     sei();
 
     while (1) {
-        forward(SPEED);
-        _delay_ms(DELAY);
-        reverse(SPEED);
-        _delay_ms(DELAY);
-        brake();
-        _delay_ms(DELAY);
-        ccw_rotation(SPEED);
-        _delay_ms(DELAY);
-        cw_rotation(SPEED);
-        _delay_ms(DELAY);
         measureDistance();
-        meas = getDistance();
-        printf("Measured: %u\n", meas);
-        _delay_ms(500);
+        char insn = SPI_Recv(); // receive data from SPI
+        switch (insn) {
+            case 'F':
+                forward(SPEED);
+                break;
+            case 'B':
+                reverse(SPEED);
+                break;
+            case 'L':
+                ccw_rotation(SPEED);
+                break;
+            case 'R':
+                cw_rotation(SPEED);
+                break;
+            case 'S':
+                brake();
+                break;
+            case 'D':
+                meas = getDistance();
+                break;
+            default:
+                brake();
+        }
     }
 
 //     return 0;

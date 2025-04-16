@@ -21,10 +21,10 @@ PB0: Echo pin, timer 1 ICP1 input capture
 
 Using SPI0
 
-PB4: MISO
-PB3: MOSI
-PB5: SCK
-PB2: CS
+PB4: MISO - green
+PB3: MOSI - yellow
+PB5: SCK - blue
+PB2: CS - purple
 
 ## Current assignments - broken and I believe actually not true
 
