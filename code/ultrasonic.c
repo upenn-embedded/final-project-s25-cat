@@ -2,12 +2,11 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <stdint.h>
+#include "ultrasonic.h"
 
+#ifndef F_CPU
 #define F_CPU 16000000UL
-
-#define TRIG_PIN PD4
-#define ECHO_PIN PD6
-
+#endif
 
 volatile uint16_t timer1_count = 0;
 volatile uint8_t measurementReady = 0;
@@ -35,21 +34,17 @@ ISR(TIMER1_CAPT_vect) {
         // Falling edge detected: calculate pulse width
         timer1_count = ICR1 - start_time;
         measurementReady = 1;
-        TCCR1B |= (1 << ICES1); // Switch back to capture rising edge for the next measurement
+    TCCR1B |= (1 << ICES1); // Switch back to capture rising edge for the next measurement
     }
 }
 
 
 void measureDistance() {
-    DDRD &= ~(1 << ECHO_PIN);   // set PD6 as input
-    PORTD &= ~(1 << ECHO_PIN);  // disable pull-up
-
-    measurementReady = 0;
     send_trigger_pulse();
     _delay_ms(60);
     uint16_t duration_us = timer1_count / 2;
     distanceCm = duration_us / 58;
-    
+    measurementReady = 0;
 }
 
 uint8_t getDistance() {
