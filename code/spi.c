@@ -2,10 +2,6 @@
 #define F_CPU 16000000UL
 #endif
 
-#ifndef __AVR_ATmega328PB__
-#define __AVR_ATmega328PB__
-#endif
-
 
 //#include <xc.h>
 #include <avr/io.h>
@@ -15,53 +11,58 @@
 #include <stdlib.h>
 
 #include "spi.h"
-#include "motor_control.h"
-#include "ultrasonic.h"
-
-// TODO: for some reason the compiler isn't recognizing 
-// these pins correctly, and the compiler doesn't like SPI ISRs...
-#ifndef SPCR
-  #define SPCR _SFR_IO8(0x2D)
-#endif
-
-#ifndef SPSR
-  #define SPSR _SFR_IO8(0x2E)
-#endif
-
-#ifndef SPDR
-  #define SPDR _SFR_IO8(0x2F)
-#endif
 
 void spiInit() {
+//    SPCR0 = (1<<SPE) | (1 << SPIE); // enable SPI, enable SPI interrupts
+    DDRB &= ~((1 << SCK) | (1 << MOSI) | (1 << CS));   // set these to inputs since atmega is peripheral
     DDRB |= (1 << MISO); // MISO is output
-    SPCR = (1 << SPE) | (1 << SPIE); // enable SPI
 }
 
-#pragma interrupt_handler SPI_STC_handler:SPI_STC_vect
-void SPI_STC_handler(void) {
-    uint8_t message = SPDR;
+//int main() {
+//    spiInit();
+//    DDRD |= (1 << PD7);
+//    
+////    sei();
+//    while (1) {
+//        SPI_Recv();
+//        PORTD ^= (1 << PD7);
+////        _delay_ms(500);
+//    }
+//    return 0;
+//}
+
+char SPI_Recv(void) {
+    while(!(SPSR0 & (1 << SPIF)));
+    char resp = SPDR0;
+    SPDR0 = 5;
+    return resp;
+}
+ISR(SPI_STC_vect) {
+    PORTD ^= (1 << PD7);
+    uint8_t message = SPDR0;
     uint8_t response = 0;
     
     switch (message) {
         case 'F':
-            forward(100);
+            response = 1;
             break;
         case 'R':
-            reverse(100);
+            response = 2;
             break;
         case 'B':
-            brake();
+            response = 3;
             break;
         case 'L':
-            ccw_rotation(100);
+            response = 4;
             break;
         case 'D':
-            cw_rotation(100);
+            response = 5;
             break;
         case 'S':
-            response = getDistance();
+            response = 6;
             break;
     }
     
-    SPDR = response;
+    SPDR0 = response;
 }
+
