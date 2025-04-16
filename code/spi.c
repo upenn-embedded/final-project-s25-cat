@@ -34,6 +34,7 @@ char SPI_Recv(void) {
     while(!(SPSR0 & (1 << SPIF)));
     char message = SPDR0;
     uint8_t response = getDistance(); // preload distance
+    // TODO: tbh this might be fine, esp with fast sampling, but might have to preload for real
     
     switch (message) {
         case 'F':

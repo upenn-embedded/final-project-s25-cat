@@ -25,7 +25,7 @@ int main(void) {
     TCCR1B = (1 << WGM12) | (1 << CS11) | (1 << ICES1); // fast PWM, prescle by 8, and input capture set on rising edge 
     TIMSK1 = (1 << ICIE1); // enable input capture
 
-//     sei();
+    sei();
 
     while (1) {
         measureDistance();
@@ -47,12 +47,12 @@ int main(void) {
                 brake();
                 break;
             case 'D':
-                meas = getDistance();
+                // meas = getDistance();
                 break;
             default:
                 brake();
         }
     }
 
-//     return 0;
-// }
+    return 0;
+}
