@@ -13,23 +13,24 @@
 #include "spi.h"
 
 void spiInit() {
-//    SPCR0 = (1<<SPE) | (1 << SPIE); // enable SPI, enable SPI interrupts
+    SPCR0 = (1<<SPE) | (1 << SPIE); // enable SPI, enable SPI interrupts
+//    SPCR0 = (1<<SPE   );
     DDRB &= ~((1 << SCK) | (1 << MOSI) | (1 << CS));   // set these to inputs since atmega is peripheral
     DDRB |= (1 << MISO); // MISO is output
 }
 
-//int main() {
-//    spiInit();
-//    DDRD |= (1 << PD7);
-//    
-////    sei();
-//    while (1) {
+int main() {
+    spiInit();
+    DDRD |= (1 << PD7);
+    
+    sei();
+    while (1) {
 //        SPI_Recv();
 //        PORTD ^= (1 << PD7);
-////        _delay_ms(500);
-//    }
-//    return 0;
-//}
+//        _delay_ms(500);
+    }
+    return 0;
+}
 
 char SPI_Recv(void) {
     while(!(SPSR0 & (1 << SPIF)));
@@ -37,7 +38,7 @@ char SPI_Recv(void) {
     SPDR0 = 5;
     return resp;
 }
-ISR(SPI_STC_vect) {
+ISR(SPI0_STC_vect) {
     PORTD ^= (1 << PD7);
     uint8_t message = SPDR0;
     uint8_t response = 0;
