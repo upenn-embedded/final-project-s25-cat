@@ -174,3 +174,7 @@ PE0: ICP4
 #### Section 18
 
 ![1744401306814](image/atmega_pins/1744401306814.png)
+
+
+#### Section 35
+![35. Register Summary](image/atmega_pins/reg_sum.png)

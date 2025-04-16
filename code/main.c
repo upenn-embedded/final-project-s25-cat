@@ -15,6 +15,8 @@
 
 int main(void) {
     uint8_t meas = 0;
+
+    uart_init();
     spiInit();
     motorInit();
     // Since timer1 is used both for ultrasonic input capture and motor PWM, combined setup will be here
