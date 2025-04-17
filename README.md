@@ -434,17 +434,24 @@ Definition of done: when the movement of the robot matches the object detection 
 
    The critical components of our system for the MVP demo are the ultrasonic sensor, Raspberry Pi, camera, the ATMega328Pb. The L298N H-Bridge Driver and 2 motors were provided with the base robot car (Katzbot).
 
-   Right now, we have the raspberry pi connected to the AtMega328Pb where the Raspberry Pi will send signals to the AtMega328Pb via SPI serial communication. We are preloading directions into the Raspberry Pi for MVP demo purposes. The ultrasonic sensor will use Timer1 for output compare to detect objects close to it. Timer1 and Timer2 will be connected to the motors once an object is detected (to push the object to the beacon). We are using a pin change interrupt for a manual safety stop through a push-button. We have a power bank to power the Raspberry Pi. We also have a voltage divider between the Raspberry Pi (3.3V) and ATMega328Pb (5V).
+   Right now, we have the raspberry pi connected to the AtMega328Pb where the Raspberry Pi will send signals to the AtMega328Pb via SPI serial communication. We are preloading directions into the Raspberry Pi for MVP demo purposes. The ultrasonic sensor will use Timer1 for output compare to detect objects close to it, but eventually we want to use it to detect walls, while the camera and raspberry pi will detect the objects (we plan to train a model and use image processing). Timer1 and Timer2 will be connected to the motors once an object is detected (to push the object to the beacon). We are using a pin change interrupt for a manual safety stop through a push-button. We have a power bank to power the Raspberry Pi. We also have a voltage divider between the Raspberry Pi (3.3V) and ATMega328Pb (5V).
+
+   The main requirements we are currently hitting are Timers (PWM with motors), interrupts (pin change interrupt with a push button for emergency stop). We plan to incoroporate image processing for the final demo.
 2. Explain your firmware implementation, including application logic and critical drivers you've written.
 3. Demo your device.
 4. Have you achieved some or all of your Software Requirements Specification (SRS)?
 
    1. Show how you collected data and the outcomes.
+
+   Raspberry Pi & AtMega328Pb communication via SPI
+
+   ![1744933511560](image/README/1744933511560.png)
 5. Have you achieved some or all of your Hardware Requirements Specification (HRS)?
 
    1. Show how you collected data and the outcomes.
 6. Show off the remaining elements that will make your project whole: mechanical casework, supporting graphical user interface (GUI), web portal, etc.
 7. What is the riskiest part remaining of your project?
+   The riskiest part remaining of our project is the image processing via the raspberry pi and training the model to detect an object we are defining as trash. 
 
    1. How do you plan to de-risk this?
 8. What questions or help do you need from the teaching team?
