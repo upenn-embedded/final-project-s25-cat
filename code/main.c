@@ -157,11 +157,18 @@ int main(void) {
                 brake();
                 break;
             case 'D':
-                measureDistance();
-                meas = getDistance();
+
+                measureDistance();          // Triggers measurement
+                meas = getDistance();       // Gets last measured distance
                 printf("Distance: %d cm\n", meas);
+            
+                if (meas < 10) {
+                    brake();
+                    printf("Obstacle too close — braking.\n");
+                }
                 _delay_ms(100);
                 break;
+                
             default:
                 brake();
                 break;
