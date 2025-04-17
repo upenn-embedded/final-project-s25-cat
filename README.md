@@ -427,19 +427,21 @@ Definition of done: when the movement of the robot matches the object detection 
 ## MVP Demo
 
 1. Show a system block diagram & explain the hardware implementation.
-2. Explain your firmware implementation, including application logic and critical drivers you've written.
-3. Demo your device.
-4. Have you achieved some or all of your Software Requirements Specification (SRS)?
+
+   ![1744926252994](image/README/1744926252994.png)
+4. Explain your firmware implementation, including application logic and critical drivers you've written.
+5. Demo your device.
+6. Have you achieved some or all of your Software Requirements Specification (SRS)?
 
    1. Show how you collected data and the outcomes.
-5. Have you achieved some or all of your Hardware Requirements Specification (HRS)?
+7. Have you achieved some or all of your Hardware Requirements Specification (HRS)?
 
    1. Show how you collected data and the outcomes.
-6. Show off the remaining elements that will make your project whole: mechanical casework, supporting graphical user interface (GUI), web portal, etc.
-7. What is the riskiest part remaining of your project?
+8. Show off the remaining elements that will make your project whole: mechanical casework, supporting graphical user interface (GUI), web portal, etc.
+9. What is the riskiest part remaining of your project?
 
    1. How do you plan to de-risk this?
-8. What questions or help do you need from the teaching team?
+10. What questions or help do you need from the teaching team?
 
 ## Final Project Report
 
@@ -506,7 +508,3 @@ Reflect on your project. Some questions to address:
 ## References
 
 Fill in your references here as you work on your final project. Describe any libraries used here.
-for wal
- C
-tput
-nsor detection.
