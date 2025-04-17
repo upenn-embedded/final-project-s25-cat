@@ -1,5 +1,7 @@
 # Debrief of the pins
 
+## VERY IMPORTANT!!!!!!! disconnect all jumpers from ATMega328pb before flashing code to it
+
 ## Aspirational assignments
 
 ### Motor

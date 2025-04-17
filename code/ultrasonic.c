@@ -67,23 +67,23 @@ static uint8_t distanceCm = 0;
 
 void ultrasonic_init() {
     // TRIG as output
-    TRIG_DDR |= (1 << TRIG_BIT);
-    TRIG_PORT &= ~(1 << TRIG_BIT);
+    DDRD |= (1 << TRIG_BIT);
+    PORTD &= ~(1 << TRIG_BIT);
 
     // ECHO as input
-    ECHO_DDR &= ~(1 << ECHO_BIT);
+    DDRB &= ~(1 << ECHO_BIT);
 
     // Timer1 setup (normal mode, prescaler 8 = 0.5 us ticks)
-    TCCR1A = 0;
-    TCCR1B = (1 << CS11); // prescaler = 8
+    // TCCR1A = 0;
+    // TCCR1B = (1 << CS11); // prescaler = 8
 }
 
 void send_trigger_pulse() {
-    TRIG_PORT &= ~(1 << TRIG_BIT);
+    PORTD &= ~(1 << TRIG_BIT);
     _delay_us(2);
-    TRIG_PORT |= (1 << TRIG_BIT);
+    PORTD |= (1 << TRIG_BIT);
     _delay_us(10);
-    TRIG_PORT &= ~(1 << TRIG_BIT);
+    PORTD &= ~(1 << TRIG_BIT);
 }
 
 void measureDistance() {
@@ -93,13 +93,13 @@ void measureDistance() {
     send_trigger_pulse();
 
     // Wait for echo to go HIGH (start of pulse)
-    while (!(ECHO_PIN_REG & (1 << ECHO_BIT)));
+    while (!(PINB & (1 << ECHO_BIT)));
 
     // Start timing
     TCNT1 = 0;
 
     // Wait for echo to go LOW (end of pulse)
-    while (ECHO_PIN_REG & (1 << ECHO_BIT));
+    while (PINB & (1 << ECHO_BIT));
 
     end_time = TCNT1;
 

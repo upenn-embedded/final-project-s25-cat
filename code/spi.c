@@ -20,16 +20,6 @@ void spiInit() {
     DDRB |= (1 << MISO); // MISO is output
 }
 
-int main() {
-    uart_init();
-    spiInit();
-    
-    while (1) {
-        char received = SPI_Recv();
-    }
-    return 0;
-}
-
 char SPI_Recv(void) {
     while(!(SPSR0 & (1 << SPIF)));
     char message = SPDR0;
@@ -53,7 +43,6 @@ char SPI_Recv(void) {
             response = 5;
             break;
         case 'S':
-            // response = 6;
             break;
     }
     
