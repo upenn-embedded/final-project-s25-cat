@@ -428,20 +428,20 @@ Definition of done: when the movement of the robot matches the object detection 
 
 1. Show a system block diagram & explain the hardware implementation.
 
-   ![1744926252994](image/README/1744926252994.png)
-4. Explain your firmware implementation, including application logic and critical drivers you've written.
-5. Demo your device.
-6. Have you achieved some or all of your Software Requirements Specification (SRS)?
+   ![1744926958363](image/README/1744926958363.png)
+2. Explain your firmware implementation, including application logic and critical drivers you've written.
+3. Demo your device.
+4. Have you achieved some or all of your Software Requirements Specification (SRS)?
 
    1. Show how you collected data and the outcomes.
-7. Have you achieved some or all of your Hardware Requirements Specification (HRS)?
+5. Have you achieved some or all of your Hardware Requirements Specification (HRS)?
 
    1. Show how you collected data and the outcomes.
-8. Show off the remaining elements that will make your project whole: mechanical casework, supporting graphical user interface (GUI), web portal, etc.
-9. What is the riskiest part remaining of your project?
+6. Show off the remaining elements that will make your project whole: mechanical casework, supporting graphical user interface (GUI), web portal, etc.
+7. What is the riskiest part remaining of your project?
 
    1. How do you plan to de-risk this?
-10. What questions or help do you need from the teaching team?
+8. What questions or help do you need from the teaching team?
 
 ## Final Project Report
 
