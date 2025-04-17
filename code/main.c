@@ -157,7 +157,6 @@ int main(void) {
                 brake();
                 break;
             case 'D':
-
                 measureDistance();          // Triggers measurement
                 meas = getDistance();       // Gets last measured distance
                 printf("Distance: %d cm\n", meas);
@@ -168,7 +167,7 @@ int main(void) {
                 }
                 _delay_ms(100);
                 break;
-                
+
             default:
                 brake();
                 break;
