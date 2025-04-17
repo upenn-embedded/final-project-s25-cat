@@ -12,6 +12,8 @@ PD5: Left motor forward, PWM timer0 OC0B
 
 PB1: Left motor reverse, PWM timer1 OC1A
 
+PC0 : Emergency stop
+
 ### Ultrasonic sensor
 
 PD4: Trig pin
@@ -175,6 +177,6 @@ PE0: ICP4
 
 ![1744401306814](image/atmega_pins/1744401306814.png)
 
-
 #### Section 35
+
 ![35. Register Summary](image/atmega_pins/reg_sum.png)
