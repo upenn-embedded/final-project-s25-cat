@@ -6,4 +6,4 @@
 #define CS PB2
 
 void spiInit();
-char SPI_Recv(void);
+char SPI_Recv(uint8_t dist);

@@ -10,7 +10,7 @@
 #define F_CPU 16000000UL
 #endif
 
-volatile uint16_t timer1_count = 0;
+volatile uint16_t timer_count = 0;
 volatile uint8_t measurementReady = 0;
 uint8_t distanceCm = 0;
 
@@ -54,7 +54,7 @@ void measureDistance() {
     if (measurementReady) {
         uint16_t duration = timer_count / 2;  // in µs
         uint16_t distance_cm = duration / 58;
-        last_distance = distance_cm;
+        distanceCm = distance_cm;
         measurementReady = 0;
     }
 }
