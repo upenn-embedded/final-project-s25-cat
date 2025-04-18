@@ -428,7 +428,7 @@ Definition of done: when the movement of the robot matches the object detection 
 
 1. Show a system block diagram & explain the hardware implementation.
 
-   ![1744926958363](image/README/1744926958363.png)
+   ![1744990915708](image/README/1744990915708.png)
 
    NOTE: The blue blocks in the above System Block diagram correspond to component we have not yet intergrated for our MVP demo, but plan to incorporate for our final demo.
 
