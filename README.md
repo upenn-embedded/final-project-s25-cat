@@ -484,7 +484,7 @@ The main requirements we are currently hitting are Timers (PWM with motors), int
    ![1744933511560](image/README/1744933511560.png)
 5. Have you achieved some or all of your Hardware Requirements Specification (HRS)?
 
-   We have acheived all of our Hardware Requirements except image processing with the raspberry pi that intergrates with the ATMega. We have SPI working with dummy direction data to communicate between the Raspberry Pi and AtMega. We have the ultrasonic sensor working properly to detect objects at a certain distance threshold. Later, we will use the ultrasonic sensor for wall detection, while the camera will detect trash. Our robot's motors are working properly and move based on the directions we input. Note that we no longer need the IR sensor and the buck converter as we are using image processing to detect objects and a powerbank to power the raspberry pi and a voltbetween the Atmega328PB and Raspberry PI.
+   We have acheived all of our Hardware Requirements except image processing with the raspberry pi that integrates with the ATMega. We have SPI working with dummy direction data to communicate between the Raspberry Pi and AtMega. We have the ultrasonic sensor working properly to detect objects at a certain distance threshold. Later, we will use the ultrasonic sensor for wall detection, while the camera will detect trash. Our robot's motors are working properly and move based on the directions we input. Note that we no longer need the IR sensor and the buck converter as we are using image processing to detect objects and a powerbank to power the raspberry pi and a voltbetween the Atmega328PB and Raspberry PI.
 
    1. Show how you collected data and the outcomes.
 
