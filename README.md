@@ -447,11 +447,21 @@ Definition of done: when the movement of the robot matches the object detection 
 
    ![1744933511560](image/README/1744933511560.png)
 5. Have you achieved some or all of your Hardware Requirements Specification (HRS)?
+   We have acheived all of our Hardware Requirements except image processing with the raspberry pi that intergrates with the ATMega. We have SPI working with dummy direction data to communicate between the Raspberry Pi and AtMega. We have the ultrasonic sensor working properly to detect objects at a certain distance threshold. Later, we will use the ultrasonic sensor for wall detection, while the camera will detect trash. Our robot's motors are working properly and move based on the directions we input.
 
    1. Show how you collected data and the outcomes.
+      We tested the ultrasonic sensor code that integrates Timer 3 and used the serial terminal to print out distance values:
+
+      ![1744937258654](image/README/1744937258654.png)
+
+   Video Link: https://drive.google.com/file/d/17VDj15f5mGnT_kkAiv49TOgbWERdB4tv/view?usp=drivesdk
 6. Show off the remaining elements that will make your project whole: mechanical casework, supporting graphical user interface (GUI), web portal, etc.
+
+   We have a shovel 3D printed. It has a slot and attachment block that fits into the robot. We have an open bottom plate with barriers to "trap" trash and we have a ledge in between to mount the camera for when we incorporate that.
+
+   ![1744938154408](image/README/1744938154408.png)
 7. What is the riskiest part remaining of your project?
-   The riskiest part remaining of our project is the image processing via the raspberry pi and training the model to detect an object we are defining as trash. 
+   The riskiest part remaining of our project is the image processing via the raspberry pi and training the model to detect an object we are defining as trash.
 
    1. How do you plan to de-risk this?
 8. What questions or help do you need from the teaching team?
