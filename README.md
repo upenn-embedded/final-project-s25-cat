@@ -460,6 +460,10 @@ Definition of done: when the movement of the robot matches the object detection 
    We have a shovel 3D printed. It has a slot and attachment block that fits into the robot. We have an open bottom plate with barriers to "trap" trash and we have a ledge in between to mount the camera for when we incorporate that.
 
    ![1744938154408](image/README/1744938154408.png)
+
+   ![1744988417455](image/README/1744988417455.png)
+
+   ![1744988433334](image/README/1744988433334.png)
 7. What is the riskiest part remaining of your project?
    The riskiest part remaining of our project is the image processing via the raspberry pi and training the model to detect an object we are defining as trash.
 
