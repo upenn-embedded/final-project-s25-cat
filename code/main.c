@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 // -------- CONFIG --------
-#define SPEED 200
+#define SPEED 500
 #define DELAY 1000
 
 #define BUTTON_PIN_REG PINC
@@ -52,31 +52,35 @@ int main(void) {
     sei();
 
     while (!emergency_stop) {
-        char insn = SPI_Recv(); // receive command
-        switch (insn) {
-            case 'F':
-                forward(SPEED);
-                break;
-            case 'B':
-                reverse(SPEED);
-                break;
-            case 'L':
-                ccw_rotation(SPEED);
-                break;
-            case 'R':
-                cw_rotation(SPEED);
-                break;
-            case 'S':
-                brake();
-                break;
-            case 'D':
-                measureDistance();          // Triggers measurement
-                meas = getDistance();       // Gets last measured distance
-                break;
-            default:
-                brake();
-                break;
-        }
+        measureDistance();          // Triggers measurement
+        meas = getDistance();       // Gets last measured distance
+        if (meas < 20) {
+            brake();
+        } else {
+            char insn = SPI_Recv(meas); // receive command
+            switch (insn) {
+                case 'F':
+                    forward(SPEED);
+                    break;
+                case 'B':
+                    reverse(SPEED);
+                    break;
+                case 'L':
+                    ccw_rotation(SPEED);
+                    break;
+                case 'R':
+                    cw_rotation(SPEED);
+                    break;
+                case 'S':
+                    brake();
+                    break;
+                case 'D':
+                    break;
+                default:
+                    brake();
+                    break;
+            }
+        } 
     }
     brake();
     printf("EMERGENCY STOP triggered!\n");
