@@ -7,6 +7,7 @@
 
 void motorInit() {
     timer0_init();
+    timer1_init();
     timer2_init();
 }
 
@@ -15,6 +16,12 @@ void timer0_init(void) {
     DDRD |= (1 << L_F) | (1 << R_F);
     TCCR0A = (1 << WGM00) | (1 << WGM01); // fast PWM
     TCCR0B = (1 << CS01); // prescale by 8
+}
+
+void timer1_init(void) {
+    DDRB |= (1 << L_R); // Set left-reverse motor as output
+    TCCR1A = (1 << WGM10) | (1 << COM1A1); // Fast PWM, OC1A
+    TCCR1B = (1 << WGM12) | (1 << CS11); // Fast PWM
 }
 
 void timer2_init(void) {

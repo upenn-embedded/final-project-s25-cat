@@ -19,7 +19,7 @@ PC0 : Emergency stop
 ### Ultrasonic sensor
 
 PD4: Trig pin
-PB0: Echo pin, timer 1 ICP1 input capture
+PE2: Echo pin, timer 3 ICP3 input capture
 
 ### SPI
 

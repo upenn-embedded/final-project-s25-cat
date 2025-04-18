@@ -16,12 +16,12 @@
 #include <stdint.h>
 #include <avr/io.h>
 
-#define TRIG_PORT PORTD
-#define TRIG_BIT  PD4
+#define TRIG_PIN PD4
+#define ECHO_PIN PE2  // Changed from PB0 to PE2 (ICP3)
 
-#define ECHO_BIT     PB0  
-void ultrasonic_init();
+// void ultrasonic_init();
 void measureDistance();
 uint8_t getDistance();
+void ultrasonic_timer3_init();
 
 #endif
