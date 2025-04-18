@@ -14,18 +14,18 @@
 #define BAUD_PRESCALE (((F_CPU / (BAUD * 16UL))) - 1)
 
 #define TRIG_PIN PD4
-#define ECHO_PIN PB0
+#define ECHO_PIN PE2  // Changed from PB0 to PE2 (ICP3)
 
 volatile uint16_t timer_count = 0;
 volatile uint8_t measurementReady = 0;
 volatile uint16_t last_distance = 0;
 
-// ----- TIMER SETUP FOR ULTRASONIC -----
-void ultrasonic_timer1_init() {
-    TCCR1A = 0;
-    TCCR1B = (1 << CS11);        // Prescaler = 8 (tick = 0.5 µs)
-    TIMSK1 = (1 << ICIE1);       // Enable input capture interrupt
-    TCCR1B |= (1 << ICES1);      // Trigger on rising edge first
+// ----- TIMER 3 SETUP FOR ULTRASONIC -----
+void ultrasonic_timer3_init() {
+    TCCR3A = 0;
+    TCCR3B = (1 << CS31);        // Prescaler = 8 (tick = 0.5 µs)
+    TIMSK3 = (1 << ICIE3);       // Enable input capture interrupt
+    TCCR3B |= (1 << ICES3);      // Trigger on rising edge first
 }
 
 // ----- TRIGGER PULSE -----
@@ -39,16 +39,16 @@ void send_trigger_pulse() {
 }
 
 // ----- INPUT CAPTURE ISR -----
-ISR(TIMER1_CAPT_vect) {
+ISR(TIMER3_CAPT_vect) {
     static uint16_t start_time = 0;
 
-    if (TCCR1B & (1 << ICES1)) {
-        start_time = ICR1;
-        TCCR1B &= ~(1 << ICES1);
+    if (TCCR3B & (1 << ICES3)) {
+        start_time = ICR3;
+        TCCR3B &= ~(1 << ICES3);
     } else {
-        timer_count = ICR1 - start_time;
+        timer_count = ICR3 - start_time;
         measurementReady = 1;
-        TCCR1B |= (1 << ICES1);
+        TCCR3B |= (1 << ICES3);
     }
 }
 
@@ -166,9 +166,9 @@ int main(void) {
     uart_init();
     timer0_init();
     timer1_pwm_init();
-    ultrasonic_timer1_init();
+    ultrasonic_timer3_init();
 
-    DDRB &= ~(1 << ECHO_PIN);   // ECHO as input
+    DDRE &= ~(1 << ECHO_PIN);   // PE2 as input for ECHO
     sei();  // Enable global interrupts
 
     while (1) {
