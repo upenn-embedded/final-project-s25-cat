@@ -428,6 +428,8 @@ Definition of done: when the movement of the robot matches the object detection 
 
 1. Show a system block diagram & explain the hardware implementation.
 
+   ![1744996398584](image/README/1744996398584.png)
+
    NOTE: The blue blocks in the above System Block diagram correspond to component we have not yet intergrated for our MVP demo, but plan to incorporate for our final demo.
 
    The critical components of our system for the MVP demo are the ultrasonic sensor, Raspberry Pi, camera, the ATMega328Pb. The L298N H-Bridge Driver and 2 motors were provided with the base robot car (Katzbot).
@@ -438,7 +440,7 @@ The main requirements we are currently hitting are Timers (PWM with motors), int
 
 2. Explain your firmware implementation, including application logic and critical drivers you've written.
 
-   We have our code modularized such that we have files for the motor control, ultrasonic sensor, and SPI communication protocol handled separately which we integrate all together in our main file. We made the corresponding header files for these. 
+   We have our code modularized such that we have files for the motor control, ultrasonic sensor, and SPI communication protocol handled separately which we integrate all together in our main file. We made the corresponding header files for these.
 
    For the motor control, we are implementing timers 0,1,2 and initializing them. Then we case depending on the specific type of direction we need, forward, right, left, back, counterclockwise rotation, clockwise rotation, and stop (or break) which is based upon the motor specification of the datasheet from the robot frame we are using.
 
@@ -451,16 +453,14 @@ The main requirements we are currently hitting are Timers (PWM with motors), int
    In our main function, we first initialize all the sensors, pins, timers and enable global interrputs. Then we enter our execution loop, where we measure the distance (by calling the ultrasonic.c measureDistance and storing it). If the distance is less than 20 cm, we brake. Otherwise, we start listening for the next incoming message from SPI, and set the MISO message to be the latest measurement. Once we receive the command from MOSI, we case on the value of the command character and call the corresponding functions to move the motors. If at any point during this loop we press the emergency brake button, we set off the pin change interrupt, which will set the emergency_stop flag variable to 1. Then we will exit the execution loop, brake the robot and enter an infinite idle loop.
 
    We have the uart protocol that we were given in class, but we have only used it so far for debugging purposes. We do not plan on using uart for any further functionality.
-
 3. Demo your device.
    Demo completed
-
 4. Have you achieved some or all of your Software Requirements Specification (SRS)?
 
    We have achieve some of our software requirements. Some of these requirements have been modified since we are no longer using the infrarred sensor (SRS-01, SRS-02) and have substituted the I2C communication for SPI (SRS-02, SRS-06)
 
    SRS-01: Sensor polling frequency. The polling frequency of the ultrasonic sensor depends on the frequency of command sending from the Raspberry Pi to the ATMega, since we are measuring the distance once per main loop cycle. Right now, the subprocess to measure a new distance takes less than 100 ms, so we can and have achieved the target 10 Hz frequency in our testing process. We have decided that it will take unnecessary time and power to be measuring as often, when it won't be sent back to the raspberry pi.
-      
+
    SRS-02: Trash Detection Threshold. This software requirement has been modified since we are no longer using the infrarred sensor. We are planning on detect trash with the camera connected to the raspberry pi. This is a software requirement that will be developed in the following week, and is tied to the image processing and recognition model.
 
    SRS-03: Obstacle avoidance threshold. We have achieved this objective. The robot stops when the ultrasonic sensor detects a distance of less than 20cm from the nearest object.
@@ -471,30 +471,28 @@ The main requirements we are currently hitting are Timers (PWM with motors), int
 
    SRS-06: I2C Communication protocol. This software requirement has been modified to SPI communication protocol. We have achieved this software requirement since we are able to send commands from the Raspberry Pi to the ATMega, which the ATMega interprets and sets the motor direction. Then the ATMega returns the last distance measured by the ultrasonic sensor.
 
-      1. Show how you collected data and the outcomes.
+   1. Show how you collected data and the outcomes.
 
-      SRS-01: For the polling frequency, we ran the code for the ultrasonic sensor freely and we observed it was meeting our frequency specifications.
+   SRS-01: For the polling frequency, we ran the code for the ultrasonic sensor freely and we observed it was meeting our frequency specifications.
 
-      SRS-03: In the MVP demo we demonstrated how the robot would stop when it would detect an object at less than 20 cm, and resume movement when it no longer detected the obstacle.
+   SRS-03: In the MVP demo we demonstrated how the robot would stop when it would detect an object at less than 20 cm, and resume movement when it no longer detected the obstacle.
 
-      SRS-05: We tested the PWM output with the oscilloscope at the start of the development. Now we have the working motors demonstratd in the MVP demo.
+   SRS-05: We tested the PWM output with the oscilloscope at the start of the development. Now we have the working motors demonstratd in the MVP demo.
 
-      SRS-06: Raspberry Pi & AtMega328Pb communication via SPI
+   SRS-06: Raspberry Pi & AtMega328Pb communication via SPI
 
-      ![1744933511560](image/README/1744933511560.png)
-   
+   ![1744933511560](image/README/1744933511560.png)
 5. Have you achieved some or all of your Hardware Requirements Specification (HRS)?
 
    We have acheived all of our Hardware Requirements except image processing with the raspberry pi that intergrates with the ATMega. We have SPI working with dummy direction data to communicate between the Raspberry Pi and AtMega. We have the ultrasonic sensor working properly to detect objects at a certain distance threshold. Later, we will use the ultrasonic sensor for wall detection, while the camera will detect trash. Our robot's motors are working properly and move based on the directions we input. Note that we no longer need the IR sensor and the buck converter as we are using image processing to detect objects and a powerbank to power the raspberry pi and a voltbetween the Atmega328PB and Raspberry PI.
 
    1. Show how you collected data and the outcomes.
-   
+
       We tested the ultrasonic sensor code that integrates Timer 3 and used the serial terminal to print out distance values:
 
       ![1744937258654](image/README/1744937258654.png)
 
    Video Link: https://drive.google.com/file/d/17VDj15f5mGnT_kkAiv49TOgbWERdB4tv/view?usp=drivesdk
-   
 6. Show off the remaining elements that will make your project whole: mechanical casework, supporting graphical user interface (GUI), web portal, etc.
 
    We have a shovel 3D printed and attached. It has a slot and holes drilled within such that we were able to  connect it to the mainframe of the robot with tight zipties. We also  We  ave an open bottom plate with barriers to "trap" trash and we have a ledge in between to mount ultrasonic, which we already have mounted, and enough space to mount the camera next.
@@ -513,7 +511,6 @@ The main requirements we are currently hitting are Timers (PWM with motors), int
    1. How do you plan to de-risk this?
 
    We are using a yellow block to simulate trash. This will simplify our machine learning training of the data as the dimensions of the block will be consistent. The trash the robot is aiming to collect is for relatively similar sized, smaller objects. We will also be using a pretrained model as a base for the image recognition. To de-risk this model training as much as we can, we will use as much data needed to minimize the loss function. This data will take the form of pictures of the "trash" taken with the camera we will be using on our final system. This will allow the model to be as fine-tuned to our hardware as possible.
-   
 8. What questions or help do you need from the teaching team?
 
    One question which has surfaced for our team is how may we improve the grip of our wheels or lighten the load of the robot as the wheels sometimes lose contact with the ground, slowing the pace of our robot due to mechanics and physicals, not due to the embedded system. To address this, we added a rock to center the mass such that there is greater contact between the wheels and ground; however, we encounter the wheels do not always remain in contact with the ground.
