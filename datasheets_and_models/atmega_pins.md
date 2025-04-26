@@ -25,7 +25,7 @@ PE2: Echo pin, timer 3 ICP3 input capture
 
 Using SPI0
 
-PB4: MISO - green
+PB4: MISO - green, white
 PB3: MOSI - yellow
 PB5: SCK - blue
 PB2: CS - purple
