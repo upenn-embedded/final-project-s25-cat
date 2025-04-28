@@ -134,7 +134,7 @@
   
   /* === CURSOR TRAIL === */
   .trail {
-    position: absolute;
+    position: fixed;
     pointer-events: none;
     font-size: 1em;
     animation: fadeout 0.7s forwards;
