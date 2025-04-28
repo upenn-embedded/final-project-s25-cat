@@ -1,93 +1,156 @@
-/* style.css */
-
-/* Truck drive animation */
-/* Animate Truck Smoothly */
-@keyframes truckMove {
-    0% {
-        transform: translateX(-200px);
+/* === VARIABLES === */
+:root {
+    --nav-height: 60px;
+  }
+  
+  /* === GLOBAL RESET & BASE === */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Baloo 2', cursive;
+    background: linear-gradient(to bottom, #ff6f00, #ffb74d);
+    color: #4e1f00;
+    overflow-x: hidden;
+    /* push everything below the fixed nav */
+    padding-top: var(--nav-height);
+  }
+  
+  /* === NAVBAR === */
+  nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: rgba(255, 111, 0, 0.9);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    z-index: 1000;
+  }
+  nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    list-style: none;
+  }
+  nav li {
+    margin: 0 1em;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s;
+  }
+  nav a:hover {
+    color: #ffe0b2;
+  }
+  
+  /* === HERO HEADER === */
+  .hero {
+    position: relative;
+    /* top padding for visual breathing */
+    padding: 2em 1em;
+    /* extra bottom padding to make room for the truck */
+    padding-bottom: 6em;
+  }
+  .hero h1 {
+    font-size: 3em;
+    color: #fff;
+    text-shadow: 2px 2px #6d3100;
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+  .hero-image {
+    display: block;
+    max-width: 90%;
+    margin: 0 auto;
+    border: 6px solid #ff6f00;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+  
+  /* === TRUCK IN HEADER === */
+  .truck {
+    position: absolute;
+    /* ride just above the very bottom of the header */
+    bottom: 10px;
+    left: -150px;              /* start off to the left */
+    font-size: 3em;
+    transform: scaleX(-1);     /* face “forward” */
+    filter: drop-shadow(4px 4px 6px rgba(0,0,0,0.8));
+    animation: drive 8s linear infinite;
+    z-index: 500;              /* above hero bg but below nav */
+  }
+  @keyframes drive {
+    0%   { left: -150px; }
+    100% { left: calc(100% + 150px); }
+  }
+  
+  /* === MAIN CONTENT === */
+  main {
+    max-width: 900px;
+    margin: auto;
+    background: #fff8f0;
+    padding: 2em 1em;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  }
+  main section {
+    margin-bottom: 2em;
+  }
+  main h2 {
+    font-size: 2em;
+    color: #ff6f00;
+    border-bottom: 4px solid #ff6f00;
+    display: inline-block;
+    padding-bottom: 0.2em;
+  }
+  main p,
+  main li {
+    font-size: 1.1em;
+    margin-top: 0.5em;
+  }
+  main ul,
+  main ol {
+    margin-left: 1.2em;
+    margin-top: 0.5em;
+  }
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+    margin-top: 0.5em;
+  }
+  .gallery img {
+    max-width: calc(33% - 1em);
+    border: 3px solid #ff6f00;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  /* === CURSOR TRAIL === */
+  .trail {
+    position: absolute;
+    pointer-events: none;
+    font-size: 1em;
+    animation: fadeout 0.7s forwards;
+  }
+  @keyframes fadeout {
+    to {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.5);
     }
-    100% {
-        transform: translateX(120vw);
-    }
-}
-
-.truck {
-position: absolute;
-top: 2rem;
-left: -200px;
-font-size: 5rem;
-animation: truckMove 10s linear infinite;
-white-space: nowrap;
-}
-
-/* Fade in the page */
-@keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
-}
-
-.fade-in {
-animation: fadeIn 1.5s ease-in forwards;
-}
-
-/* Section backgrounds */
-.section-yellow {
-background-color: #ffe066;
-}
-
-.section-orange {
-background-color: #ff944d;
-}
-
-.section-deep-orange {
-background-color: #ff704d;
-}
-
-/* Titles */
-.section-title {
-font-size: 3rem;
-font-weight: 900;
-color: #b30000;
-text-shadow: 3px 3px #ffcc00;
-}
-
-/* Body text */
-.section-text {
-font-size: 1.5rem;
-margin-top: 1rem;
-}
-
-/* Images */
-.img-fun {
-border-radius: 1rem;
-box-shadow: 0 8px 20px rgba(255, 102, 0, 0.6);
-transition: transform 0.4s;
-}
-
-.img-fun:hover {
-transform: scale(1.05) rotate(2deg);
-}
-
-/* Spin on hover */
-.hover-spin:hover {
-animation: spinSlow 2s linear infinite;
-}
-
-@keyframes spinSlow {
-from { transform: rotate(0deg); }
-to { transform: rotate(360deg); }
-}
-
-/* Cards */
-.card-flashy {
-background: #fff3e0;
-border: 4px solid #ff6600;
-border-radius: 1rem;
-padding: 2rem;
-box-shadow: 0 6px 15px rgba(255, 102, 0, 0.4);
-transition: transform 0.3s;
-}
-
-.card-flashy:hover {
-transform: scale(1.05) rotate(-1deg);
-}
+  }
+  
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 1.5em 0;
+    color: #4e1f00;
+    font-size: 0.9em;
+  }
+  

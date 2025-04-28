@@ -2,114 +2,152 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taaranator: The Trash Truck</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Taaranator Final Project</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gradient-to-b from-orange-400 via-yellow-300 to-red-500 text-gray-900">
+<body>
 
-  <!-- Header with Truck Animation -->
-  <header class="relative bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 py-24 text-center text-white shadow-2xl overflow-hidden">
-    <div class="max-w-5xl mx-auto px-6">
-      <h1 class="text-6xl font-extrabold tracking-wide">Taaranator: The Trash Truck</h1>
-      <p class="mt-6 text-2xl font-semibold">The wildest trash-collecting monster you've ever seen!</p>
-    </div>
-  </header> 
 
-  <main class="fade-in">
 
-    <!-- Section: Summary -->
-    <section class="section-yellow py-20 text-center">
-      <div class="max-w-5xl mx-auto px-6">
-        <h2 class="section-title">Summary</h2>
-        <p class="section-text">Taaranator is a fearless autonomous trash collector, charging forward, scooping debris, and removing it from out of the way.</p>
+  <!-- NAVBAR -->
+  <nav>
+    <ul>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#motivation">Motivation</a></li>
+      <li><a href="#system-design">System Design</a></li>
+      <li><a href="#software">Software</a></li>
+      <li><a href="#hardware">Hardware</a></li>
+      <li><a href="#sprint-progress">Sprint Progress</a></li>
+      <li><a href="#final-demo">Final Demo</a></li>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#images">Images</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="truck">🚚</div>
+    <h1>Taaranator Final Project Report</h1>
+    <img src="CE522F46-A602-44DF-AA87-370EB3FBBBA6.png" alt="Taaranator Robot" class="hero-image">
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>Our autonomous Taaranator trash‐collection vehicle detects, collects, and delivers small objects to a beacon. It merges embedded C on an ATmega328PB with Python/OpenCV on a Raspberry Pi to achieve real‐time perception and actuation.</p>
+    </section>
+
+    <section id="motivation">
+      <h2>Motivation</h2>
+      <p>Small‐scale litter removals remains tedious. Taaranator applies robotics & computer vision to automate cleanup, showcasing embedded systems integration, sensor fusion, and end‐to‐end ML deployment on edge hardware.</p>
+    </section>
+
+    <section id="system-design">
+      <h2>System Design</h2>
+      <p>The block diagram features a 6 V AA battery pack → buck converter → ATMega328PB for motor & sensor control, plus a Raspberry Pi with PiCam V3 for vision. Communication runs over SPI with level‐shifting. A laser‐cut shovel plate on the front captures debris.</p>
+    </section>
+
+    <section id="software">
+      <h2>Software</h2>
+      <ul>
+        <li>Sensor Polling @ ≥10 Hz (IR + Ultrasonic)</li>
+        <li>Trash & Obstacle Threshold Detection</li>
+        <li>PWM Motor Control (≥100 Hz)</li>
+        <li>SPI Protocol w/ ACK/NACK</li>
+        <li>YOLO-based Object Detection on Pi</li>
+        <li>Emergency Stop GPIO Interrupt</li>
+      </ul>
+    </section>
+
+    <section id="hardware">
+      <h2>Hardware</h2>
+      <ul>
+        <li>ATMega328PB & L298N Driver</li>
+        <li>Raspberry Pi + PiCam V3</li>
+        <li>HC-SR04P Ultrasonic & IR Proximity Sensors</li>
+        <li>12×AA Battery Pack + Buck Converter</li>
+        <li>Bi-directional Logic Level Shifter</li>
+        <li>Laser-cut Acrylic Chassis & 3D-printed Shovel</li>
+      </ul>
+    </section>
+
+    <section id="sprint-progress">
+      <h2>Sprint Progress</h2>
+      <ol>
+        <li>Assembled chassis, wired power & sensors</li>
+        <li>Implemented motor & ultrasonic drivers on ATMega</li>
+        <li>Built SPI link & Python client on Pi</li>
+        <li>Trained preliminary YOLO model for trash detection</li>
+        <li>Integrated full loop: detect → approach → scoop → deliver</li>
+      </ol>
+    </section>
+
+    <section id="final-demo">
+      <h2>Final Demo</h2>
+      <p>The live demo shows Taaranator identifying a small object, driving forward, engaging its shovel to scoop, and then reversing to place it at the beacon— all autonomously, with wall avoidance.</p>
+    </section>
+
+    <section id="video">
+      <h2>Video</h2>
+      <p><a href="https://youtu.be/YOUR_VIDEO_LINK" target="_blank">▶ Watch our 5-minute demo video</a></p>
+    </section>
+
+    <section id="images">
+      <h2>Images</h2>
+      <div class="gallery">
+        <img src="image1.jpg" alt="Side view">
+        <img src="image2.jpg" alt="Electronics layout">
+        <img src="image3.jpg" alt="Shovel mechanism">
       </div>
     </section>
 
-    <!-- Section: System Block Diagram -->
-    <section class="section-orange py-20 text-center">
-      <div class="max-w-5xl mx-auto px-6">
-        <h2 class="section-title">System Block Diagram</h2>
-        <img src="https://via.placeholder.com/600x400?text=Block+Diagram" alt="System Block Diagram" class="img-fun">
-      </div>
+    <section id="results">
+      <h2>Results</h2>
+      <p>We met SRS-01 (≥10 Hz polling), SRS-03 (30 cm avoidance), and HRS-02 (≥15 cm IR detection @ 90% reliability). Proof lives in <code>/validation</code>.</p>
     </section>
 
-    <!-- Section: Design Sketch -->
-    <section class="section-deep-orange py-20 text-center">
-      <div class="max-w-5xl mx-auto px-6">
-        <h2 class="section-title">Design Sketch</h2>
-        <img src="https://via.placeholder.com/600x400?text=Design+Sketch" alt="Design Sketch" class="img-fun">
-      </div>
+    <section id="conclusion">
+      <h2>Conclusion</h2>
+      <p>Taaranator demonstrates a fully integrated embedded-vision mobile robot. We learned deep insights into SPI timing, real-time threading on Pi, and mechanical tolerancing for laser-cut parts. Next: refine our detection model and add SLAM navigation.</p>
     </section>
 
-    <!-- Section: Final Demo Video -->
-    <section class="section-yellow py-20 text-center">
-      <div class="max-w-5xl mx-auto px-6">
-        <h2 class="section-title">Final Demo Video</h2>
-        <img src="https://via.placeholder.com/800x450?text=Demo+Video+Placeholder" alt="Demo Video" class="img-fun">
-      </div>
+    <section id="references">
+      <h2>References</h2>
+      <ul>
+        <li><a href="https://docs.github.com/en/pages/quickstart" target="_blank">GitHub Pages Quickstart</a></li>
+        <li>HC-SR04P Ultrasonic Datasheet</li>
+        <li>ONNX Runtime Quantization Guide</li>
+        <li>Ultralytics YOLOv5 Docs</li>
+      </ul>
     </section>
-
-    <!-- Section: Final Product Images -->
-    <section class="section-orange py-20 text-center">
-      <div class="max-w-5xl mx-auto px-6">
-        <h2 class="section-title">Final Product Images</h2>
-        <div class="grid md:grid-cols-3 gap-10 mt-10">
-          <img src="https://via.placeholder.com/300x300?text=Front+View" alt="Front View" class="img-fun hover-spin">
-          <img src="https://via.placeholder.com/300x300?text=Side+View" alt="Side View" class="img-fun hover-spin">
-          <img src="https://via.placeholder.com/300x300?text=Interior+View" alt="Interior Electronics" class="img-fun hover-spin">
-        </div>
-      </div>
-    </section>
-
-    <!-- Section: Validation Results -->
-    <section class="section-deep-orange py-20 text-center">
-      <div class="max-w-5xl mx-auto px-6">
-        <h2 class="section-title">Validation Results</h2>
-        <div class="grid md:grid-cols-2 gap-10 mt-10">
-          <div class="card-flashy">
-            <h3 class="text-2xl font-bold mb-4">Software Validation ✅</h3>
-            <ul class="list-disc list-inside text-left">
-              <li><strong>SRS-02:</strong> Trash detection threshold (validated)</li>
-              <li><strong>SRS-04:</strong> Image processing + SPI communication (validated)</li>
-            </ul>
-          </div>
-          <div class="card-flashy">
-            <h3 class="text-2xl font-bold mb-4">Hardware Validation ✅</h3>
-            <ul class="list-disc list-inside text-left">
-              <li><strong>HRS-01:</strong> Drive motor ≥ 0.3 m/s (validated)</li>
-              <li><strong>HRS-03:</strong> Ultrasonic wall detection at 30 cm (validated)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section: Final Reflection -->
-    <section class="section-yellow py-20 text-center">
-      <div class="max-w-5xl mx-auto px-6">
-        <h2 class="section-title">Final Reflection</h2>
-        <p class="section-text">Taaranator taught </p>us to atttempt to modularize as much as possible to be able to test and isolate issues, to critically, yo work as a team
-      </div>
-    </section>
-
-    <!-- Section: References -->
-    <section class="section-orange py-20 text-center">
-      <div class="max-w-5xl mx-auto px-6">
-        <h2 class="section-title">References</h2>
-        <ul class="list-disc list-inside text-left mx-auto max-w-3xl text-lg">
-          <li>ATMega328PB Datasheet</li>
-        </ul>
-      </div>
-    </section>
-
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-red-700 text-white py-8 text-center text-2xl font-extrabold tracking-widest">
-    THANKS FOR RIDING WITH TAARANATOR 🚛🔥
+  <!-- FOOTER -->
+  <footer>
+    <p>Team CAT — Chekayli Meyer • Andrea González Varela • Taarana Jammula</p>
+    <p>&copy; 2025 ESE 3500, UPenn</p>
   </footer>
 
+  <!-- CURSOR TRAIL SCRIPT -->
+  <script>
+    document.addEventListener('mousemove', e => {
+      const trail = document.createElement('div');
+      trail.className = 'trail';
+      trail.textContent = '🔥';
+      trail.style.left = e.clientX + 'px';
+      trail.style.top  = e.clientY + 'px';
+      document.body.appendChild(trail);
+      setTimeout(() => trail.remove(), 700);
+    });
+  </script>
 </body>
 </html>
