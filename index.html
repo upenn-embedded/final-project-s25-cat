@@ -133,7 +133,33 @@
 
     <section id="conclusion">
       <h2>Conclusion</h2>
-      <p></p>
+        <p>Throughout the project, we learned a lot about integrating different hardware and software components into a cohesive system. We adapted our design as challenges arose and found creative solutions to hardware and communication issues. Below is a summary of our project reflection:</p>
+        <ul>
+          <li><strong>What did we learn from it?</strong>
+            We learned how to integrate subsystems such as motor control, SPI communication, ultrasonic sensing, and computer vision into a single working platform. We also gained experience troubleshooting hardware-level issues like voltage mismatches and adapting quickly when components did not perform as expected.
+          </li>
+          <li><strong>What went well?</strong>
+            Motor control, SPI communication, and extended robot operation went very smoothly after setup. Our robot consistently detected objects using the camera and moved appropriately. We were able to successfully run the robot for long periods without brown-outs or crashes.
+          </li>
+          <li><strong>What accomplishments are we proud of?</strong>
+            We are proud of successfully transitioning from using an IR sensor to a camera-based machine learning model for trash detection. We are also proud of implementing SPI communication using a voltage divider when our logic level shifter failed, and ensuring the robot was mechanically stable and robust during long-term testing.
+          </li>
+          <li><strong>What did we learn/gain from this experience?</strong>
+            We gained valuable hands-on experience integrating hardware and software, troubleshooting electrical issues, and building systems that are reliable over time. We also developed stronger problem-solving skills by adjusting our approach when real-world conditions differed from expectations.
+          </li>
+          <li><strong>Did we have to change our approach?</strong>
+            Yes. We changed from using an IR sensor to a camera for trash detection, switched from I2C to SPI communication for robustness, and replaced the 6V battery and buck converter setup with a simpler power bank solution. We also added a counterweight to balance the front-heavy design caused by the shovel.
+          </li>
+          <li><strong>What could have been done differently?</strong>
+            We could have tested critical components like the level shifter and power system independently before integration. We also could have fine-tuned the software for ultrasonic distance measurement to improve accuracy and consistency. Adding additional ultrasonic sensors positioned at angles would have improved wall detection when approaching at non-head-on angles.
+          </li>
+          <li><strong>Did we encounter obstacles that we didn’t anticipate?</strong>
+            Yes. We did not anticipate the failure of the logic level shifter, which required building a voltage divider ourselves. We also did not initially plan for the shovel’s front-heavy impact on the robot’s balance, which required a counterweight solution.
+          </li>
+          <li><strong>What could be a next step for this project?</strong>
+            Next steps could include improving the ultrasonic sensor software to filter noise and calibrate distances more precisely, as well as adding additional ultrasonic sensors at angles to improve obstacle detection and wall following when approaching walls from different directions.
+          </li>
+        </ul>
     </section>
 
   </main>
