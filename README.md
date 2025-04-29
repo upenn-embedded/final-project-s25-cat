@@ -568,14 +568,14 @@ If you’ve never made a GitHub pages website before, you can follow this webpag
 
 Reflect on your project. Some questions to address:
 
-* What did you learn from it?
-* What went well?
-* What accomplishments are you proud of?
-* What did you learn/gain from this experience?
-* Did you have to change your approach?
-* What could have been done differently?
-* Did you encounter obstacles that you didn’t anticipate?
-* What could be a next step for this project?
+* **What did we learn from it?** We learned how to integrate subsystems such as motor control, SPI communication, ultrasonic sensing, and computer vision into a single working platform. We also gained experience troubleshooting hardware-level issues like voltage mismatches and adapting quickly when components did not perform as expected.
+* **What went well?** Motor control, SPI communication, and extended robot operation went very smoothly after setup. Our robot consistently detected objects using the camera and moved appropriately. We were able to successfully run the robot for long periods without brown-outs or crashes.
+* **What accomplishments are we proud of?** We are proud of successfully transitioning from using an IR sensor to a camera-based machine learning model for trash detection. We are also proud of implementing SPI communication using a voltage divider when our logic level shifter failed, and ensuring the robot was mechanically stable and robust during long-term testing.
+* **What did we learn/gain from this experience?** We gained valuable hands-on experience integrating hardware and software, troubleshooting electrical issues, and building systems that are reliable over time. We also developed stronger problem-solving skills by adjusting our approach when real-world conditions differed from expectations.
+* **Did we have to change our approach?** Yes. We changed from using an IR sensor to a camera for trash detection, switched from I2C to SPI communication for robustness, and replaced the 6V battery and buck converter setup with a simpler power bank solution. We also added a counterweight to balance the front-heavy design caused by the shovel.
+* **What could have been done differently?** We could have tested critical components like the level shifter and power system independently before integration. We also could have fine-tuned the software for ultrasonic distance measurement to improve accuracy and consistency. Adding additional ultrasonic sensors positioned at angles would have improved wall detection when approaching at non-head-on angles.
+* **Did we encounter obstacles that we didn’t anticipate?** Yes. We did not anticipate the failure of the logic level shifter, which required building a voltage divider ourselves. We also did not initially plan for the shovel’s front-heavy impact on the robot’s balance, which required a counterweight solution.
+* **What could be a next step for this project?** Next steps could include improving the ultrasonic sensor software to filter noise and calibrate distances more precisely, as well as adding additional ultrasonic sensors at angles to improve obstacle detection and wall following when approaching walls from different directions.
 
 ## References
 
