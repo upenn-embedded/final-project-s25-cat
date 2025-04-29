@@ -51,27 +51,31 @@
       <p>During development, we made several adjustments to our original software requirements to better align with the project goals and hardware constraints. While we initially planned to use an IR sensor for trash detection and I2C for communication, we successfully transitioned to using machine learning with computer vision for trash detection and SPI communication between the Raspberry Pi and ATMega328PB for faster, more reliable data transfer. We also replaced ultrasonic sensor polling with timer-based interrupts to improve distance detection responsiveness. The following summarizes our final SRS compliance and validation: </p>
       <ul>
         <li>SRS-01: Sensor Polling Frequency (Updated):
-          Instead of polling, we implemented timer-based interrupts for the ultrasonic sensor, using timer 3. 
+          Instead of polling, we implemented timer-based interrupts for the ultrasonic sensor, using timer 3. The system behavior confirmed that wall detection was responsive without lag.
         </li>
         <li>SRS-02: Trash Detection (Updated):
-          We replaced the IR sensor with a machine learning model (YOLO) running on the Raspberry Pi, enabling accurate detection of trash objects based on visual input. We verified this by placing yellow blocks in view of the camera and confirming that image capture, inference, and SPI command transmission occurred reliably.
+          We replaced the IR sensor with a YOLO machine learning model running on the Raspberry Pi. In testing, the robot reliably detected yellow blocks placed within view of the camera and triggered collection behavior appropriately.
         </li>
         <li>SRS-03: Obstacle Avoidance Threshold:
-          Wall detection with the ultrasonic sensor remained as planned. We validated that when an object was detected within 20–30 cm, the robot stopped moving within 100 ms, as confirmed by high-speed video captures of motor control signals.
+          Wall detection using the ultrasonic sensor remained as planned. We manually validated behavior by observing that the robot stopped moving when approaching walls within about 20–30 cm.
         </li>
         <li>SRS-04: Image Processing (Updated):
-          The Raspberry Pi captured and processed images at approximately 1 frame per second or faster. We verified through log timestamps that detection-to-command delay remained under 0.5 seconds, satisfying the timing requirement even with the added YOLO model processing overhead.
+          The Raspberry Pi captured and processed images at approximately 1 frame per second. We observed that the robot responded to trash detection reliably.
         </li>
         <li>SRS-05: PWM Motor Control Timing:
-          Motor PWM control was implemented with Timer0 on the ATMega328PB.
+          Motor PWM control was implemented with Timer0 at a target of ~500 Hz. We observed smooth and consistent motor operation without perceptible jitter.
         </li>
         <li>SRS-06: SPI Communication Protocol (Updated):
-          Instead of I2C, we implemented SPI communication between the Raspberry Pi and ATMega328PB for transmitting navigation directions. We verified correct data transfers using SPI logic analyzer captures and confirmed low-latency updates from detection to motor action.
+          Instead of I2C, we implemented SPI communication between the Raspberry Pi and ATMega328PB for transmitting navigation directions. We confirmed low-latency updates from detection to motor action.
         </li>
         <li>SRS-07: User Interrupt & Safety Response:
-          An emergency stop button connected to PC0 was successfully integrated using a pin-change interrupt. During testing, the motors stopped within 100 ms of button press, as confirmed by oscilloscope measurements and manual tests.
+          An emergency stop button connected to PC0 was successfully integrated using a pin-change interrupt. During testing, the motors stopped within 100 ms of button press, as confirmed by manual tests.
         </li>
       </ul>
+      <h2>proof</h2>
+      <p><a href="https://drive.google.com/file/d/1o-LlPXBNlsq7b0NR9ot6adOTAn2zIAc2/view?usp=sharing" target="_blank">▶ Watch our motor control (forward, backwards, speed) video</a></p>
+      <p><a href="https://drive.google.com/file/d/1erBPFCrLf8zJfBMNw_j0bJg6JB4yxkOM/view?usp=sharing" target="_blank">▶ Watch our motor rotation video</a></p>
+      <img src="image\README\1744933511560.png" alt="SPI Dummy Value test" class="hero-image">
     </section>
 
     <section id="Hardware Requirements Specification Validation">
