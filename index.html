@@ -46,25 +46,36 @@
       <p>We designed and built an autonomous robot that detects, collects, and disposes of lightweight trash using computer vision and embedded systems. Our robot scans its surroundings to identify yellow blocks as trash, moves toward the target, collects it with a custom shovel, and deposits it against a wall detected by an ultrasonic sensor. After each collection, it rotates and resumes scanning for new objects. The system combines sensor integration, actuator control, serial communication, and bare-metal C programming to create a modular and practical cleanup solution. Our project not only demonstrates key embedded and robotics principles but also opens the door for future improvements, such as real-time object recognition and advanced autonomous navigation for indoor and outdoor environments.</p>
     </section>
 
-    <section id="system-design">
-      <h2>System Design</h2>
-      <p>The block diagram features a 6 V AA battery pack → buck converter → ATMega328PB for motor & sensor control, plus a Raspberry Pi with PiCam V3 for vision. Communication runs over SPI with level‐shifting. A laser‐cut shovel plate on the front captures debris.</p>
-    </section>
-
-    <section id="software">
-      <h2>Software</h2>
+    <section id="Software Requirements Specification Validation">
+      <h2>SRS Validation</h2>
+      <p>During development, we made several adjustments to our original software requirements to better align with the project goals and hardware constraints. While we initially planned to use an IR sensor for trash detection and I2C for communication, we successfully transitioned to using machine learning with computer vision for trash detection and SPI communication between the Raspberry Pi and ATMega328PB for faster, more reliable data transfer. We also replaced ultrasonic sensor polling with timer-based interrupts to improve distance detection responsiveness. The following summarizes our final SRS compliance and validation: </p>
       <ul>
-        <li>Sensor Polling @ ≥10 Hz (IR + Ultrasonic)</li>
-        <li>Trash & Obstacle Threshold Detection</li>
-        <li>PWM Motor Control (≥100 Hz)</li>
-        <li>SPI Protocol w/ ACK/NACK</li>
-        <li>YOLO-based Object Detection on Pi</li>
-        <li>Emergency Stop GPIO Interrupt</li>
+        <li>SRS-01: Sensor Polling Frequency (Updated):
+          Instead of polling, we implemented timer-based interrupts for the ultrasonic sensor, using timer 3. 
+        </li>
+        <li>SRS-02: Trash Detection (Updated):
+          We replaced the IR sensor with a machine learning model (YOLO) running on the Raspberry Pi, enabling accurate detection of trash objects based on visual input. We verified this by placing yellow blocks in view of the camera and confirming that image capture, inference, and SPI command transmission occurred reliably.
+        </li>
+        <li>SRS-03: Obstacle Avoidance Threshold:
+          Wall detection with the ultrasonic sensor remained as planned. We validated that when an object was detected within 20–30 cm, the robot stopped moving within 100 ms, as confirmed by high-speed video captures of motor control signals.
+        </li>
+        <li>SRS-04: Image Processing (Updated):
+          The Raspberry Pi captured and processed images at approximately 1 frame per second or faster. We verified through log timestamps that detection-to-command delay remained under 0.5 seconds, satisfying the timing requirement even with the added YOLO model processing overhead.
+        </li>
+        <li>SRS-05: PWM Motor Control Timing:
+          Motor PWM control was implemented with Timer0 on the ATMega328PB.
+        </li>
+        <li>SRS-06: SPI Communication Protocol (Updated):
+          Instead of I2C, we implemented SPI communication between the Raspberry Pi and ATMega328PB for transmitting navigation directions. We verified correct data transfers using SPI logic analyzer captures and confirmed low-latency updates from detection to motor action.
+        </li>
+        <li>SRS-07: User Interrupt & Safety Response:
+          An emergency stop button connected to PC0 was successfully integrated using a pin-change interrupt. During testing, the motors stopped within 100 ms of button press, as confirmed by oscilloscope measurements and manual tests.
+        </li>
       </ul>
     </section>
 
-    <section id="hardware">
-      <h2>Hardware</h2>
+    <section id="Hardware Requirements Specification Validation">
+      <h2>HRS Validation</h2>
       <ul>
         <li>ATMega328PB & L298N Driver</li>
         <li>Raspberry Pi + PiCam V3</li>
