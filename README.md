@@ -6,7 +6,7 @@
 * Team Name: CAT
 * Team Members: Chekayli Meyer, Andrea González, Taarana Jammula
 * GitHub Repository URL: [upenn-embedded/final-project-s25-cat: ese3500s25-final-project-s25-final-project-skeleton created by GitHub Classroom](https://github.com/upenn-embedded/final-project-s25-cat)
-* GitHub Pages Website URL: [for final submission]
+* GitHub Pages Website URL: https://upenn-embedded.github.io/final-project-s25-cat/
 
 ## Final Project Proposal
 

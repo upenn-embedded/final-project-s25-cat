@@ -17,16 +17,11 @@
   <!-- NAVBAR -->
   <nav>
     <ul>
-      <li><a href="#abstract">Abstract</a></li>
-      <li><a href="#motivation">Motivation</a></li>
-      <li><a href="#system-design">System Design</a></li>
-      <li><a href="#software">Software</a></li>
-      <li><a href="#hardware">Hardware</a></li>
-      <li><a href="#sprint-progress">Sprint Progress</a></li>
-      <li><a href="#final-demo">Final Demo</a></li>
+      <li><a href="#abstract">Abstract & Motivation</a></li>
       <li><a href="#video">Video</a></li>
       <li><a href="#images">Images</a></li>
-      <li><a href="#results">Results</a></li>
+      <li><a href="#srs-val">SRS Validation</a></li>
+      <li><a href="#hrs-val">HRS Validation</a></li>
       <li><a href="#conclusion">Conclusion</a></li>
       <li><a href="#references">References</a></li>
     </ul>
@@ -41,7 +36,7 @@
 
   <!-- MAIN CONTENT -->
   <main>
-    <section id="abstract & motivation">
+    <section id="abstract">
       <h2>Abstract & Motivation</h2>
       <p>We designed and built an autonomous robot that detects, collects, and disposes of lightweight trash using computer vision and embedded systems. Our robot scans its surroundings to identify yellow blocks as trash, moves toward the target, collects it with a custom shovel, and deposits it against a wall detected by an ultrasonic sensor. After each collection, it rotates and resumes scanning for new objects. The system combines sensor integration, actuator control, serial communication, and bare-metal C programming to create a modular and practical cleanup solution. Our project not only demonstrates key embedded and robotics principles but also opens the door for future improvements, such as real-time object recognition and advanced autonomous navigation for indoor and outdoor environments.</p>
     </section>
@@ -62,7 +57,7 @@
       </div>
     </section>
 
-    <section id="Software Requirements Specification Validation">
+    <section id="srs-val">
       <h2>SRS Validation</h2>
       <p>During development, we made some adjustments to our original software requirements to better align with the project goals and hardware constraints. While we initially planned to use an IR sensor for trash detection and I2C for communication, we successfully transitioned to using machine learning with computer vision for trash detection and SPI communication between the Raspberry Pi and ATMega328PB for faster, more reliable data transfer. We also replaced ultrasonic sensor polling with timer-based interrupts to improve distance detection responsiveness. The following summarizes our final SRS compliance and validation: </p>
       <ul>
@@ -103,7 +98,7 @@
     
     </section>
 
-    <section id="Hardware Requirements Specification Validation">
+    <section id="hrs-val">
       <h2>HRS Validation</h2>
       <p>Throughout the development process, we adapted several of our hardware designs and configurations to better meet practical constraints and testing outcomes. For example, we replaced our nonfunctional logic level shifter with a voltage divider, substituted I2C with SPI for robustness, and used a power bank instead of a 6V battery with a buck converter. We also added a rear counterweight to balance the shovel, and verified long-term power stability over extended runs. The following summarizes our final HRS compliance and validation:</p>
       <ul>
