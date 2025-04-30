@@ -522,7 +522,7 @@ If you’ve never made a GitHub pages website before, you can follow this webpag
 
 ### 1. Video
 
-[Insert final project video here]
+[https://drive.google.com/file/d/1tgKRL_t79QS1e0g7a95CM60AKaz--BF2/view?usp=sharing]()
 
 * The video must demonstrate your key functionality.
 * The video must be 5 minutes or less.
