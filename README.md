@@ -322,39 +322,39 @@ We also updated the bash script to be able to run the code with SPI, and added m
 
 Shovel:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeAPJkwLj0vOdk6ZLWGPJXBAgjxJIEl3xnAG97lNCCxFX9fl7Xv6RxYy6_n3T6P9L1vdFthPxsLy7DRzJz4mxUGlQiiX8KQZMTI18qGJH7UweCnMYly0y-NbUND2pF_5RcveFrulA?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
+![shovel](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeAPJkwLj0vOdk6ZLWGPJXBAgjxJIEl3xnAG97lNCCxFX9fl7Xv6RxYy6_n3T6P9L1vdFthPxsLy7DRzJz4mxUGlQiiX8KQZMTI18qGJH7UweCnMYly0y-NbUND2pF_5RcveFrulA?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfc5KcX1AljO4jp3t5ToqsrflRcwJfOsuVzJqMfJW1lLqWa7ENHzQKSvraMHX8qzoZ1dE6DPW1p-tbwLcyvMX3guBoox9O8FQ17_kAE5Pe3FZUD8R16T_SoX5vcueZ6TA-_Zrr7TA?key=VUb_cxOAcHKGB4hOVj2NM9BJ)![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdm-N1PT_sFphQFaIcJBmk3gGizUXUvhzkp3grNAYUXgge_yqSVyjhL7trk5TN4QUlz6F1zXzIb9VoCWhx5kokTltLixWRvYDphhWGRpvX9Fch_PQw5_ZVlHB4fEQBPZEDmudhrwQ?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
+![shovel](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfc5KcX1AljO4jp3t5ToqsrflRcwJfOsuVzJqMfJW1lLqWa7ENHzQKSvraMHX8qzoZ1dE6DPW1p-tbwLcyvMX3guBoox9O8FQ17_kAE5Pe3FZUD8R16T_SoX5vcueZ6TA-_Zrr7TA?key=VUb_cxOAcHKGB4hOVj2NM9BJ)![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdm-N1PT_sFphQFaIcJBmk3gGizUXUvhzkp3grNAYUXgge_yqSVyjhL7trk5TN4QUlz6F1zXzIb9VoCWhx5kokTltLixWRvYDphhWGRpvX9Fch_PQw5_ZVlHB4fEQBPZEDmudhrwQ?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
 
 Printing request:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcH29khFBTbFf1kg75HgQXqwwjoJ3LEYUMdoLyjXlnwE79XypZhfZfhM4ibyUwGf5h_8n0j3a3sWlM8GfVhwj6w05SBE3e-YaVDv9thuokbUxf-nqw_jZZmr_N6cWldTBHe9L-T0w?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
+![print](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcH29khFBTbFf1kg75HgQXqwwjoJ3LEYUMdoLyjXlnwE79XypZhfZfhM4ibyUwGf5h_8n0j3a3sWlM8GfVhwj6w05SBE3e-YaVDv9thuokbUxf-nqw_jZZmr_N6cWldTBHe9L-T0w?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
 
 Attachment block for shovel:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkSQq0_Aczngl70xm_x3TSbpZ0goboYt3d_ygBz2sHG1cY9fV6DU45dGeJ6dU9tJBJ0qcQDLZ9bWA94yGS2vS1NXj1Z2Zv1Jn0adKtjo5apMzzPsHpDwELMHUXGKF2JXNZenS-KA?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
+![shovel](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdkSQq0_Aczngl70xm_x3TSbpZ0goboYt3d_ygBz2sHG1cY9fV6DU45dGeJ6dU9tJBJ0qcQDLZ9bWA94yGS2vS1NXj1Z2Zv1Jn0adKtjo5apMzzPsHpDwELMHUXGKF2JXNZenS-KA?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
 
 Motor control videos:
-https://drive.google.com/file/d/1o-LlPXBNlsq7b0NR9ot6adOTAn2zIAc2/view?usp=sharing
+[Video 1](https://drive.google.com/file/d/1o-LlPXBNlsq7b0NR9ot6adOTAn2zIAc2/view?usp=sharing)
 
-https://drive.google.com/file/d/1erBPFCrLf8zJfBMNw_j0bJg6JB4yxkOM/view?usp=sharing
+[Video 2](https://drive.google.com/file/d/1erBPFCrLf8zJfBMNw_j0bJg6JB4yxkOM/view?usp=sharing)
 
 GitHub Commits:
 
 Motor Control:
 
-* https://github.com/upenn-embedded/final-project-s25-cat/blob/main/motor_control.c
-* https://github.com/upenn-embedded/final-project-s25-cat/blob/main/ultrasonic.c
-* (Datasheet): https://github.com/upenn-embedded/final-project-s25-cat/blob/main/datasheets_and_models/Romi%20Mainboard.PDF
+* [ultrasonic.h] (https://github.com/upenn-embedded/final-project-s25-cat/blob/main/motor_control.c)
+* [ultrasonic.c](https://github.com/upenn-embedded/final-project-s25-cat/blob/main/ultrasonic.c)
+* [Datasheet](https://github.com/upenn-embedded/final-project-s25-cat/blob/main/datasheets_and_models/Romi%20Mainboard.PDF)
 
 SPI:
-https://github.com/upenn-embedded/final-project-s25-cat/blob/main/code/spi.c
+[spi.c](https://github.com/upenn-embedded/final-project-s25-cat/blob/main/code/spi.c)
 
-https://github.com/upenn-embedded/final-project-s25-cat/blob/main/code/spi.h
+[spi.h](https://github.com/upenn-embedded/final-project-s25-cat/blob/main/code/spi.h)
 
 Raspberry Pi:
 
-https://github.com/andrgv/taaranator_rpi/tree/f2531cf05abb43c9d4bac655ac3ee0facf48a018
+[Raspberry Pi repository](https://github.com/andrgv/taaranator_rpi/tree/f2531cf05abb43c9d4bac655ac3ee0facf48a018)
 
 ![img](https://lh7-rt.googleusercontent.com/docsz/AD_4nXc7kr6-np9IOF9doO61hp-y-XCqGn75SNCZglBcjdTE6-RUWLdYDHU0t6v4d7bdhH2F1cCPoTMp6C0DX0B-0uNsUQXVBZ03TUUiVrBlVZuOUU-aNoNxNESLUw4KE9hGkbT320HWQQ?key=VUb_cxOAcHKGB4hOVj2NM9BJ)
 
@@ -522,7 +522,7 @@ If you’ve never made a GitHub pages website before, you can follow this webpag
 
 ### 1. Video
 
-[https://drive.google.com/file/d/1tgKRL_t79QS1e0g7a95CM60AKaz--BF2/view?usp=sharing]()
+[Final video](https://drive.google.com/file/d/1tgKRL_t79QS1e0g7a95CM60AKaz--BF2/view?usp=sharing)
 
 * The video must demonstrate your key functionality.
 * The video must be 5 minutes or less.
@@ -580,3 +580,14 @@ Reflect on your project. Some questions to address:
 ## References
 
 Fill in your references here as you work on your final project. Describe any libraries used here.
+- [ATMega 328PB datasheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/40001906C.pdf)
+- [ATmega328PB Xplained Mini Schematics](https://github.com/upenn-embedded/final-project-s25-cat/blob/main/datasheets_and_models/ATmega328PB_Xplained_Mini_Schematics.pdf)
+- [KatzBot Datasheets](https://github.com/upenn-embedded/final-project-s25-cat/blob/b537aac7de03d78fe197f5bd12d081c1ee69fa79/datasheets_and_models/Romi%20Mainboard.PDF)
+- [Ultrasonic Sensor Documentation](https://github.com/upenn-embedded/final-project-s25-cat/blob/8c9b48332c07fcebf3f4ddfdd915e39affeacde0/datasheets_and_models/hc-sr04-ultrasonic-sensor-8.snapshot.15.zip)
+- [Raspberry Pi 4 Model B](https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-datasheet.pdf)
+- [Raspberry Pi OS](https://www.raspberrypi.com/software/)
+- [Ultralytics YOLOv5 documentation](https://github.com/ultralytics/yolov5)
+- [OpenCV Python documentation](https://pypi.org/project/opencv-python/)
+- [ONNX Runtime documentation](https://onnxruntime.ai/)
+- [Python Spidev documentation](https://pypi.org/project/spidev/)
+- [Numpy documentation](https://numpy.org/)
