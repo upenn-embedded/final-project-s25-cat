@@ -120,16 +120,22 @@
   }
   .gallery {
     display: flex;
+    gap: 16px;
     flex-wrap: wrap;
-    gap: 1em;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-top: 0.5em;
   }
   .gallery img {
-    max-width: calc(33% - 1em);
+    max-width: 300px;
+    max-height: 220px;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: #fff;
     border: 3px solid #ff6f00;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   }
   
   /* === CURSOR TRAIL === */
@@ -153,4 +159,3 @@
     color: #4e1f00;
     font-size: 0.9em;
   }
-  
